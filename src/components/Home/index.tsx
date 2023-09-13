@@ -12,12 +12,13 @@ function Homepage() {
   const { opacities } = useOpacityOnMount({
     ms: TRANSITION_MS,
     transitions: 3,
+    delay: 1000,
   });
 
   const { opacities: delayedOpacities } = useOpacityOnMount({
     ms: TRANSITION_MS / 2,
     transitions: 5,
-    delay: TRANSITION_MS * 3,
+    delay: 1000 + TRANSITION_MS * 3,
   });
 
   return (

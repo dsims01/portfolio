@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import "./animations.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,28 +10,35 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
+  const [renderFull, setRenderFull] = useState(false);
+  useEffect(() => {
+    setRenderFull(true);
+  }, []);
+
   return (
     <Router>
-      <div
-        style={{
-          height: "100vh",
-          maxHeight: "100vh",
-          width: "100vw",
-          maxWidth: "100vw",
-          overflowX: "hidden",
-        }}
-        id="App"
-        className="relative hide-scrollbar-visual"
-      >
-        <Navbar />
-        <Routes>
-          <Route path={PATHS.ABOUT} element={<AboutMe />} />
-          <Route path={PATHS.EXPERIENCE} element={<Projects />} />
-          <Route path={PATHS.CONTACT} element={<Contact />} />
-          <Route path={PATHS.HOME} element={<Home />} />
-        </Routes>
-        <Footer />
-      </div>
+      {renderFull && (
+        <div
+          style={{
+            height: "100vh",
+            maxHeight: "100vh",
+            width: "100vw",
+            maxWidth: "100vw",
+            overflowX: "hidden",
+          }}
+          id="App"
+          className="relative hide-scrollbar-visual"
+        >
+          <Navbar />
+          <Routes>
+            <Route path={PATHS.ABOUT} element={<AboutMe />} />
+            <Route path={PATHS.EXPERIENCE} element={<Projects />} />
+            <Route path={PATHS.CONTACT} element={<Contact />} />
+            <Route path={PATHS.HOME} element={<Home />} />
+          </Routes>
+          <Footer />
+        </div>
+      )}
     </Router>
   );
 }
