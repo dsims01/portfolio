@@ -1,0 +1,200 @@
+// https://codepen.io/cobra_winfrey/pen/mdJeqZb
+
+@mixin magic-border($width, $color, $duration, $direction, $borderRadius) {
+  position: relative;
+  box-shadow: 0 0 1px 0 $color;
+  &:before {
+    border-radius: $borderRadius;
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: calc(100% + #{$width * 2});
+    height: calc(100% + #{$width * 2});
+    top: calc(#{$width}/ -1);
+    left: calc(#{$width}/ -1);
+    background: linear-gradient(to right, $color 0%, $color 100%),
+      linear-gradient(to top, $color 50%, transparent 50%),
+      linear-gradient(to top, $color 50%, transparent 50%),
+      linear-gradient(to right, $color 0%, $color 100%),
+      linear-gradient(to left, $color 0%, $color 100%);
+    background-position: 50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
+    background-repeat: no-repeat, no-repeat;
+    transition: transform $duration ease-in-out,
+      background-position $duration ease-in-out;
+    transform: scaleX(0) rotate(180deg * $direction);
+    transition-delay: 0s, $duration;
+  }
+  &:hover {
+    &:before {
+      background-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+      transform: scaleX(1) rotate(180deg * $direction);
+      transition-delay: $duration / 2, $duration / 2;
+    }
+  }
+  &:active {
+    &:before {
+      opacity: 0.8;
+    }
+  }
+}
+
+@mixin magic-border-active($width, $color) {
+  position: relative;
+  &:before {
+    border-radius: 100px;
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: calc(100% + #{$width * 2});
+    height: calc(100% + #{$width * 2});
+    top: calc(#{$width}/ -1);
+    left: calc(#{$width}/ -1);
+    background: linear-gradient(to right, $color 0%, $color 100%),
+      linear-gradient(to top, $color 50%, transparent 50%),
+      linear-gradient(to top, $color 50%, transparent 50%),
+      linear-gradient(to right, $color 0%, $color 100%),
+      linear-gradient(to left, $color 0%, $color 100%);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+  }
+}
+
+@mixin magic-border-mask-active($width, $background, $borderRadius) {
+  position: relative;
+  &:before {
+    z-index: -1;
+    border-radius: $borderRadius;
+    content: "";
+    position: absolute;
+    width: calc(100% + #{$width * 2});
+    height: calc(100% + #{$width * 2});
+    top: calc(#{$width}/ -1);
+    left: calc(#{$width}/ -1);
+    mask: linear-gradient(to right, #000 0%, #000 100%),
+      linear-gradient(to top, #000 50%, transparent 50%),
+      linear-gradient(to top, #000 50%, transparent 50%),
+      linear-gradient(to right, #000 0%, #000 100%),
+      linear-gradient(to left, #000 0%, #000 100%);
+    mask-repeat: no-repeat, no-repeat;
+    background: $background;
+    mask-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+  }
+}
+
+.animated-border {
+  @include magic-border(1px, var(--main-blue), 0.175s, 0, 100px);
+}
+
+.animated-border-blue {
+  overflow: visible;
+  @include magic-border(
+    1px,
+    var(--main-blue),
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-yellow {
+  overflow: visible;
+  @include magic-border(
+    1px,
+    var(--main-yellow),
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-white {
+  overflow: visible;
+  @include magic-border(
+    1px,
+    var(--off-white),
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-placeholder {
+  overflow: visible;
+  @include magic-border(
+    1px,
+    transparent,
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-white-thick {
+  overflow: visible;
+  @include magic-border(
+    2px,
+    var(--off-white),
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-purple {
+  overflow: visible;
+  @include magic-border(
+    1px,
+    var(--light-purple),
+    0.175s,
+    0,
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-active {
+  @include magic-border-active(1px, var(--main-blue));
+}
+
+.animated-border-mask-active {
+  @include magic-border-mask-active(1px, var(--slushy), 100px);
+}
+
+.animated-border-mask-active-slushy {
+  @include magic-border-mask-active(
+    1px,
+    var(--slushy),
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-mask-active-blue {
+  @include magic-border-mask-active(
+    1px,
+    var(--todo-background),
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-mask-active-white {
+  @include magic-border-mask-active(
+    1.5px,
+    var(--white-slushy),
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-mask-active-white-thick {
+  @include magic-border-mask-active(
+    2.5px,
+    var(--white-slushy),
+    var(--border-radius-default)
+  );
+}
+
+.animated-border-mask-active-purple {
+  @include magic-border-mask-active(
+    1px,
+    var(--purple-slushy),
+    var(--border-radius-default)
+  );
+}
