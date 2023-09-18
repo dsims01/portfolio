@@ -377,7 +377,7 @@ function Experience() {
                         AWS for hosting and backend services
                       </li>
                       <li className="m-b-33">Frontend built with React</li>
-                      <li className="m-b-33">
+                      <li className="m-b-33 circle-fill-list">
                         <a
                           className="blue"
                           target="_blank"
