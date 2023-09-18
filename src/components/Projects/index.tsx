@@ -82,7 +82,7 @@ function Experience() {
               color="lightGrey"
               forceHoverState={professionalHeaderHovering}
             />
-            <span className="v-m-1 subheader-font-size pointer">
+            <span className="v-m-1 subheader-font-size pointer italic">
               Professional
             </span>
           </div>
@@ -90,8 +90,8 @@ function Experience() {
             style={{
               transition: "max-height 300ms",
               maxHeight: professionalCollapsed ? 0 : "100vh",
-              overflow: "hidden",
             }}
+            className={'hide-scrollbar-visual'}
           >
             {!professionalCollapsed && (
               <div className="flex col h-m-1 text-font-size">
@@ -314,14 +314,14 @@ function Experience() {
               color="lightGrey"
               forceHoverState={personalHeaderHovering}
             />
-            <span className="v-m-1 subheader-font-size">Personal Projects</span>
+            <span className="v-m-1 subheader-font-size italic">Personal Projects</span>
           </div>
           <div
             style={{
               transition: "max-height 300ms",
               maxHeight: personalCollapsed ? 0 : "100vh",
-              overflow: "hidden",
             }}
+            className={'hide-scrollbar-visual'}
           >
             {!personalCollapsed && (
               <div className="flex col h-m-1 text-font-size">
@@ -368,7 +368,7 @@ function Experience() {
                       <li className="m-b-1 white">
                         Progressive web app for taking notes, with ability to
                         create/update inline to-do and calendar items to
-                        track/display in high-level views{" "}
+                        track at a high level{" "}
                         <span className="blue">
                           (React/AWS/Hosting/Deployment)
                         </span>

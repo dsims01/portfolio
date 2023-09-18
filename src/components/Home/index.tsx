@@ -67,7 +67,7 @@ function Homepage() {
           }}
           onClick={() => navigate(PATHS.EXPERIENCE)}
         >
-          <span className="lightish-grey">With experience in</span>
+          <span className="lightish-grey italic">With experience in</span>
           <ul className="circle-list m-0">
             <li
               style={{
