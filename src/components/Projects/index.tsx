@@ -206,7 +206,7 @@ function Experience() {
                       <li className="m-b-1 white">
                         Worked on various microservice teams in re-platforming
                         efforts for large mortgage company{" "}
-                        <span className="blue">(React/AWS/GraphQL)</span>
+                        <span className="blue">(React/NodeJS/AWS/GraphQL)</span>
                       </li>
                       <li className="m-b-33">
                         Built and managed React UI component library (used
@@ -370,7 +370,7 @@ function Experience() {
                         create/update inline to-do and calendar items to
                         track at a high level{" "}
                         <span className="blue">
-                          (React/AWS/Hosting/Deployment)
+                          (React/NodeJS/AWS/Hosting/Deployment)
                         </span>
                       </li>
                       <li className="m-b-33">
