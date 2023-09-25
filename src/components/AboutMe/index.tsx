@@ -1,8 +1,6 @@
 import React from "react";
-import { NAVBAR_HEIGHT } from "../Navbar";
 import useOpacityOnMount from "../../hooks/useOpacityOnMount";
 import { TRANSITION_MS } from "../Home";
-import { FOOTER_HEIGHT } from "../Footer";
 
 function AboutMe() {
   const { opacities } = useOpacityOnMount({
@@ -11,10 +9,7 @@ function AboutMe() {
   });
 
   return (
-    <div
-      style={{ height: `calc(100% - ${NAVBAR_HEIGHT} - ${FOOTER_HEIGHT})`, margin: "0 40px" }}
-      className="flex col justify-center align-center"
-    >
+    <>
       <div id="picture-and-label" style={{ transition: "0.3s" }}>
         <span className="v-m-1 mega-font-size center-text blue">About Me</span>
         <img
@@ -28,7 +23,7 @@ function AboutMe() {
           alt="headshot"
         />
       </div>
-      <div className="flex col">
+      <div className="flex col h-m-1">
         <span
           className="light-grey smaller-font-size m-b-1 space-letters max-width-400"
           style={{
@@ -67,7 +62,7 @@ function AboutMe() {
           Currently residing in New Orleans, Louisiana.
         </span>
       </div>
-    </div>
+    </>
   );
 }
 

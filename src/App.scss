@@ -929,6 +929,10 @@ body {
   text-align: center;
 }
 
+.center-self {
+  align-self: center;
+}
+
 .right-text {
   text-align: right;
 }
@@ -1102,11 +1106,11 @@ body {
 }
 
 .width-clamp-800 {
-  width: clamp(300px, 100%, 800px) !important;
+  width: clamp(300px, calc(100% - 1rem), 800px) !important;
 }
 
 .width-clamp-1000 {
-  width: clamp(300px, 100%, 1000px) !important;
+  width: clamp(300px, calc(100% - 1rem), 1000px) !important;
 }
 
 .min-width-2rem {
@@ -1230,6 +1234,16 @@ body {
   }
   .mega-font-size-smaller {
     font-size: var(--title-font-size-smaller);
+  }
+
+  #experience {
+    .subheader-font-size {
+      font-size: var(--text-font-size);
+    }
+
+    .text-font-size {
+      font-size: var(--sub-text-size);
+    }
   }
 }
 

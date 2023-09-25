@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NAVBAR_HEIGHT } from "../Navbar";
 import useOpacityOnMount from "../../hooks/useOpacityOnMount";
 import IconButton from "../IconButton/IconButton";
 import { Icons } from "../IconButton/icons";
-import { FOOTER_HEIGHT } from "../Footer";
 
 function Contact() {
   const { opacities } = useOpacityOnMount({
@@ -24,10 +22,7 @@ function Contact() {
     return () => clearTimeout(copySuccessTimeout);
   }, [copySuccessRender]);
   return (
-    <div
-      style={{ height: `calc(100% - ${NAVBAR_HEIGHT} - ${FOOTER_HEIGHT})` }}
-      className="h-m-50 flex col justify-center align-center"
-    >
+    <>
       <span className="v-m-1 mega-font-size center-text blue">Contact</span>
 
       <ul className="flex col text-font-size m-1">
@@ -72,7 +67,7 @@ function Contact() {
         </li>
       </ul>
       <span className="v-m-1" style={{ height: "100px" }}></span>
-    </div>
+    </>
   );
 }
 

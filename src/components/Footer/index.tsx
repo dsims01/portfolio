@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FOOTER_HEIGHT = "50px";
+export const FOOTER_HEIGHT = "20px";
 
 function Footer() {
   return (
@@ -11,7 +11,7 @@ function Footer() {
         position: "absolute",
         bottom: 0,
         right: 0,
-        zIndex: -1
+        zIndex: -1,
       }}
     >
       <a

@@ -80,8 +80,14 @@ function Navbar() {
     <>
       <div
         id="navbar-big"
-        className="flex row space-between h-p-25 "
-        style={{ width: "calc(100% - .25rem)", height: NAVBAR_HEIGHT }}
+        className="flex row space-between h-p-25 dark-hombre-vert"
+        style={{
+          width: "calc(100% - .25rem)",
+          height: NAVBAR_HEIGHT,
+          position: "sticky",
+          top: "0",
+          zIndex: 1,
+        }}
       >
         <Link to="/about">
           <img
@@ -96,7 +102,14 @@ function Navbar() {
       <div
         id="navbar-small"
         className="flex row space-between h-p-25 no-overflow hide-scrollbar-visual"
-        style={{ width: "calc(100vw - .25rem)", height: NAVBAR_HEIGHT }}
+        style={{
+          width: "calc(100vw - .25rem)",
+          height: NAVBAR_HEIGHT,
+          position: "sticky",
+          top: "0",
+          zIndex: 1,
+          overflow: "visible",
+        }}
       >
         <Link to="/about">
           <img

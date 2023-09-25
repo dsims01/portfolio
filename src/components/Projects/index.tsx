@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { NAVBAR_HEIGHT } from "../Navbar";
 import CollapseButton from "../IconButton/CollapseButton";
 import useOpacityOnMount from "../../hooks/useOpacityOnMount";
 import { TRANSITION_MS } from "../Home";
-import { FOOTER_HEIGHT } from "../Footer";
 
 function Experience() {
   const [professionalCollapsed, setProfessionalCollapsed] = useState(true);
@@ -32,13 +30,14 @@ function Experience() {
 
   const { opacities } = useOpacityOnMount({
     ms: TRANSITION_MS / 2,
-    transitions: 4,
+    transitions: 3,
   });
 
   return (
     <div
-      style={{ height: `calc(100% - ${NAVBAR_HEIGHT} - ${FOOTER_HEIGHT})` }}
-      className="h-m-50 flex col full-width"
+      style={{ height: `100%` }}
+      id="experience"
+      className="h-m-50 flex col full-width align-center"
     >
       <span
         className="h-m-1 mega-font-size border-radius-default h-p-1 blue"
@@ -49,10 +48,10 @@ function Experience() {
       >
         Experience
       </span>
-      <div className="flex row wrap align-start full-width space-letters">
+      <div className="flex row wrap align-start justify-center full-width space-letters">
         <div
           className={`m-1 flex col dark-hombre-vert border-radius-default width-clamp-800 ${
-            !opacities[2]
+            !opacities[1]
               ? "animated-border-placeholder"
               : professionalCollapsed
               ? "animated-border-white"
@@ -88,10 +87,12 @@ function Experience() {
           </div>
           <div
             style={{
-              transition: "max-height 300ms",
+              transition: "max-height 400ms",
               maxHeight: professionalCollapsed ? 0 : "100vh",
+              overflowY: "scroll",
+              overflowX: "hidden",
             }}
-            className={'hide-scrollbar-visual'}
+            // className={'hide-scrollbar-visual'}
           >
             {!professionalCollapsed && (
               <div className="flex col h-m-1 text-font-size">
@@ -284,7 +285,7 @@ function Experience() {
         </div>
         <div
           className={`m-1 flex col dark-hombre-vert border-radius-default width-clamp-800 ${
-            !opacities[3]
+            !opacities[2]
               ? "animated-border-placeholder"
               : personalCollapsed
               ? "animated-border-white"
@@ -314,14 +315,16 @@ function Experience() {
               color="lightGrey"
               forceHoverState={personalHeaderHovering}
             />
-            <span className="v-m-1 subheader-font-size italic">Personal Projects</span>
+            <span className="v-m-1 subheader-font-size italic">
+              Personal Projects
+            </span>
           </div>
           <div
             style={{
-              transition: "max-height 300ms",
+              transition: "max-height 400ms",
               maxHeight: personalCollapsed ? 0 : "100vh",
             }}
-            className={'hide-scrollbar-visual'}
+            className={"hide-scrollbar-visual"}
           >
             {!personalCollapsed && (
               <div className="flex col h-m-1 text-font-size">
@@ -367,8 +370,8 @@ function Experience() {
                     <ul className="circle-list light-grey m-l-1">
                       <li className="m-b-1 white">
                         Progressive web app for taking notes, with ability to
-                        create/update inline to-do and calendar items to
-                        track at a high level{" "}
+                        create/update inline to-do and calendar items to track
+                        at a high level{" "}
                         <span className="blue">
                           (React/NodeJS/AWS/Hosting/Deployment)
                         </span>
