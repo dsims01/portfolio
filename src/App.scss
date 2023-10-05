@@ -30,7 +30,6 @@
   --dark-purple: #413b42;
   --light-purple: #6b59ae;
   --main-blue: #1fe0e0;
-  --main-green: #111511;
   --main-yellow: #f4d06f;
 
   --slushy: linear-gradient(
@@ -113,7 +112,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: var(--dark-hombre-vert);
+  background: var(--grey);
   background-image: url("../public/background.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -387,9 +386,6 @@ body {
 .blue {
   color: var(--main-blue) !important;
 }
-.green {
-  color: var(--main-green) !important;
-}
 .pink {
   color: var(--main-pink) !important;
 }
@@ -462,10 +458,6 @@ body {
 
 .light-grey-background {
   background: var(--light-grey) !important;
-}
-
-.green-background {
-  background: var(--main-green) !important;
 }
 
 .white-background {
@@ -961,11 +953,6 @@ body {
 
 .no-overflow {
   overflow: hidden;
-}
-
-.dark-highlight,
-.dark-highlight-focused:focus-within {
-  background: var(--main-green);
 }
 
 .select {

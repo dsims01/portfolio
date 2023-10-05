@@ -116,7 +116,13 @@ import {
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { ImPencil, ImStrikethrough } from "react-icons/im";
 import { LiaTrashRestoreAltSolid } from "react-icons/lia";
-import { LuCalendarClock, LuCopy, LuCopyCheck, LuSettings2, LuTextSelect } from "react-icons/lu";
+import {
+  LuCalendarClock,
+  LuCopy,
+  LuCopyCheck,
+  LuSettings2,
+  LuTextSelect,
+} from "react-icons/lu";
 import {
   MdChecklist,
   MdDeleteForever,
@@ -180,7 +186,6 @@ export type IconColors =
   | "darkGrey"
   | "yellow"
   | "red"
-  | "green"
   | "pink"
   | "purple";
 
@@ -204,7 +209,6 @@ export const getColorClass = (color?: IconColors) =>
     darkGrey: "var(--dark-grey)",
     grey: "var(--grey)",
     red: "red",
-    green: "var(--main-green)",
     purple: "var(--light-purple)",
   }[color || "black"]);
 
