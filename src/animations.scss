@@ -24,16 +24,12 @@
     transform: scaleX(0) rotate(180deg * $direction);
     transition-delay: 0s, $duration;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     &:before {
       background-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
       transform: scaleX(1) rotate(180deg * $direction);
-      transition-delay: $duration / 2, $duration / 2;
-    }
-  }
-  &:active {
-    &:before {
-      opacity: 0.8;
+      transition-delay: calc($duration / 2), calc($duration / 2);
     }
   }
 }
@@ -81,74 +77,43 @@
   }
 }
 
-.animated-border {
-  @include magic-border(1px, var(--main-blue), 0.175s, 0, 100px);
-}
-
-.animated-border-blue {
-  overflow: visible;
-  @include magic-border(
-    1px,
-    var(--main-blue),
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
-}
-
-.animated-border-yellow {
-  overflow: visible;
-  @include magic-border(
-    1px,
-    var(--main-yellow),
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
-}
-
-.animated-border-white {
-  overflow: visible;
-  @include magic-border(
-    1px,
-    var(--off-white),
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
-}
-
 .animated-border-placeholder {
+  @include magic-border(1px, var(--light-grey), 0.175s, 0, 100px);
+}
+
+.animated-border-card-blue {
   overflow: visible;
-  @include magic-border(
-    1px,
-    transparent,
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
+  @include magic-border(1px, var(--main-blue), 0.175s, 0, var(--br-default));
+}
+
+.animated-border-card-yellow {
+  overflow: visible;
+  @include magic-border(1px, var(--main-yellow), 0.175s, 0, var(--br-default));
+}
+
+.animated-border-card-white {
+  overflow: visible;
+  @include magic-border(1px, var(--off-white), 0.175s, 0, var(--br-default));
 }
 
 .animated-border-white-thick {
   overflow: visible;
-  @include magic-border(
-    2px,
-    var(--off-white),
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
+  @include magic-border(2px, var(--off-white), 0.175s, 0, var(--br-default));
 }
 
-.animated-border-purple {
+.animated-border-card-light-grey {
   overflow: visible;
-  @include magic-border(
-    1px,
-    var(--light-purple),
-    0.175s,
-    0,
-    var(--border-radius-default)
-  );
+  @include magic-border(1px, var(--light-grey), 0.175s, 0, var(--br-default));
+}
+
+.animated-border-card-purple {
+  overflow: visible;
+  @include magic-border(1px, var(--light-purple), 0.175s, 0, var(--br-default));
+}
+
+.animated-border-card-pink {
+  overflow: visible;
+  @include magic-border(1px, var(--main-pink), 0.175s, 0, var(--br-default));
 }
 
 .animated-border-active {
@@ -159,42 +124,42 @@
   @include magic-border-mask-active(1px, var(--slushy), 100px);
 }
 
-.animated-border-mask-active-slushy {
+.animated-border-mask-active-card-yellow {
+  @include magic-border-mask-active(1px, var(--slushy), var(--br-default));
+}
+
+.animated-border-mask-active-card-blue {
+  @include magic-border-mask-active(1px, var(--todo-bg), var(--br-default));
+}
+
+.animated-border-mask-active-card-light-grey {
   @include magic-border-mask-active(
     1px,
-    var(--slushy),
-    var(--border-radius-default)
+    var(--light-grey-slushy),
+    var(--br-default)
   );
 }
 
-.animated-border-mask-active-blue {
+.animated-border-mask-active-card-white {
   @include magic-border-mask-active(
     1px,
-    var(--todo-background),
-    var(--border-radius-default)
-  );
-}
-
-.animated-border-mask-active-white {
-  @include magic-border-mask-active(
-    1.5px,
     var(--white-slushy),
-    var(--border-radius-default)
+    var(--br-default)
   );
 }
 
 .animated-border-mask-active-white-thick {
   @include magic-border-mask-active(
-    2.5px,
+    2px,
     var(--white-slushy),
-    var(--border-radius-default)
+    var(--br-default)
   );
 }
 
-.animated-border-mask-active-purple {
+.animated-border-mask-active-card-purple {
   @include magic-border-mask-active(
     1px,
     var(--purple-slushy),
-    var(--border-radius-default)
+    var(--br-default)
   );
 }

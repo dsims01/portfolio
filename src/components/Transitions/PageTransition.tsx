@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./transition-styles.scss";
 import { NAVBAR_HEIGHT } from "../Navbar";
-import { FOOTER_HEIGHT } from "../Footer";
 
 function PageTransition(props: { children: React.ReactNode; path: string }) {
   const nodeRef = useRef(null);
@@ -20,9 +19,10 @@ function PageTransition(props: { children: React.ReactNode; path: string }) {
       >
         <div
           style={{
-            height: `calc(100% - ${NAVBAR_HEIGHT} - ${FOOTER_HEIGHT})`,
+            height: `calc(100% - ${NAVBAR_HEIGHT})`,
+            paddingTop: '30px'
           }}
-          className="flex col justify-center align-center hide-scrollbar-visual"
+          className="flex col justify-center align-center"
           ref={nodeRef}
         >
           {props.children}

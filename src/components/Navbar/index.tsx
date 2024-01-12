@@ -22,7 +22,7 @@ function Navbar() {
   useOutsideAlerter(popoutMenuRef, () => setSmallNavOpen(false));
 
   const linkTextClassName =
-    "nav-text-link v-p-25 h-p-50 m-50 light-grey border-radius-default dark-hombre grey-border thin pointer ";
+    "nav-text-link v-p-25 h-p-50 m-50 light-grey br-default dark-hombre grey-border thin pointer ";
 
   const Links = useMemo(
     () => (
@@ -82,10 +82,7 @@ function Navbar() {
         id="navbar-big"
         className="flex row space-between h-p-25 dark-hombre-vert"
         style={{
-          width: "calc(100% - .25rem)",
           height: NAVBAR_HEIGHT,
-          position: "sticky",
-          top: "0",
           zIndex: 1,
         }}
       >
@@ -97,18 +94,16 @@ function Navbar() {
             alt="headshot"
           />
         </Link>
-        <div className="flex row">{Links}</div>
+        <div className="flex row relative" style={{ zIndex: 1 }}>
+          {Links}
+        </div>
       </div>
       <div
         id="navbar-small"
-        className="flex row space-between h-p-25 no-overflow hide-scrollbar-visual"
+        className="flex row space-between h-p-25 full-width"
         style={{
-          width: "calc(100vw - .25rem)",
           height: NAVBAR_HEIGHT,
-          position: "sticky",
-          top: "0",
           zIndex: 1,
-          overflow: "visible",
         }}
       >
         <Link to="/about">
@@ -122,10 +117,10 @@ function Navbar() {
         <div className="flex col">
           <IconButton
             icon={Icons.List}
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               e.preventDefault();
-              setSmallNavOpen((current) => !current);
+              setSmallNavOpen(current => !current);
             }}
             size="large"
             className="h-m-50 dark-hombre grey-border thin"
@@ -133,15 +128,15 @@ function Navbar() {
             hoverColor="white"
           />
           <div
-            className="flex col dark-hombre-reverse-horiz p-50"
+            className="flex col dark-hombre-reverse-horiz p-50 br-default blue-border thin"
             style={{
               position: "absolute",
               top: 0,
               right: smallNavOpen
                 ? 0
-                : -1 * (popoutMenuRef.current?.offsetWidth || 130) + "px",
+                : -1 * (popoutMenuRef.current?.offsetWidth || 150) + "px",
               transition: "300ms",
-              zIndex: 1,
+              zIndex: 3,
             }}
             ref={popoutMenuRef}
           >

@@ -1,8 +1,10 @@
-.page-appear, .page-enter {
+.page-appear,
+.page-enter {
   opacity: 0;
   transform: scaleX(0.2);
 }
-.page-appear-active, .page-enter-active {
+.page-appear-active,
+.page-enter-active {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;

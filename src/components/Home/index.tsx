@@ -22,16 +22,14 @@ function Homepage() {
   return (
     <div className="flex col h-m-1">
       <div className="v-m-1 uppercase blue center-self">
-        <span className="mega-font-size space-letters">D</span>
-        <span className="mega-font-size-smaller space-letters-extra">
-          erek{" "}
-        </span>
-        <span className="mega-font-size space-letters">S</span>
-        <span className="mega-font-size-smaller space-letters-extra">ims</span>
+        <span className="mega-font space-letters">D</span>
+        <span className="mega-font-smaller space-letters-extra">erek </span>
+        <span className="mega-font space-letters">S</span>
+        <span className="mega-font-smaller space-letters-extra">ims</span>
       </div>
 
       <span
-        className="light-grey text-font-size m-b-1 space-letters"
+        className="light-grey text-font m-b-1 space-letters"
         style={{
           opacity: opacities[0],
           transition: TRANSITION_MS + "ms",
@@ -40,7 +38,7 @@ function Homepage() {
         Frontend Web Developer
       </span>
       <span
-        className="light-grey smaller-font-size m-b-1 space-letters  max-width-400"
+        className="light-grey smaller-font m-b-1 space-letters  max-width-400"
         style={{
           opacity: opacities[1],
           transition: TRANSITION_MS + "ms",
@@ -49,7 +47,7 @@ function Homepage() {
         Adept in Javascript, Typescript and React
       </span>
       <div
-        className="flex col lightish-grey smaller-font-size v-m-25 space-letters max-width-400 pointer"
+        className="flex col lightish-grey smaller-font v-m-25 space-letters max-width-400 pointer"
         style={{
           opacity: opacities[2],
           transition: TRANSITION_MS + "ms",

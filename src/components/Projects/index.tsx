@@ -1,32 +1,149 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CollapseButton from "../IconButton/CollapseButton";
 import useOpacityOnMount from "../../hooks/useOpacityOnMount";
 import { TRANSITION_MS } from "../Home";
+import classnames from "classnames";
 
 function Experience() {
-  const [professionalCollapsed, setProfessionalCollapsed] = useState(true);
-  const [personalCollapsed, setPersonalCollapsed] = useState(true);
-  const [personalJumbocodeCollapsed, setPersonalJumbocodeCollapsed] =
-    useState(true);
-  const [personalBarinCollapsed, setPersonalBarinCollapsed] = useState(true);
-  const [professionalInternCollapsed, setProfessionalInternCollapsed] =
-    useState(true);
-  const [professionalJuniorCollapsed, setProfessionalJuniorCollapsed] =
-    useState(true);
-  const [professionalSeniorCollapsed, setProfessionalSeniorCollapsed] =
-    useState(true);
-  const [personalJumbocodeHovering, setPersonalJumbocodeHovering] =
-    useState(false);
-  const [personalBarinHovering, setPersonalBarinHovering] = useState(false);
-  const [professionalInternHovering, setProfessionalInternHovering] =
-    useState(false);
-  const [professionalJuniorHovering, setProfessionalJuniorHovering] =
-    useState(false);
-  const [professionalSeniorHovering, setProfessionalSeniorHovering] =
-    useState(false);
-  const [personalHeaderHovering, setPersonalHeaderHovering] = useState(false);
-  const [professionalHeaderHovering, setProfessionalHeaderHovering] =
-    useState(false);
+  return (
+    <div
+      style={{ height: `100%`, zIndex: 1 }}
+      id="experience"
+      className="flex col full-width align-center relative"
+    >
+      <span className="h-m-1 mega-font br-default h-p-1 blue">Experience</span>
+      <div className="flex row wrap align-start justify-center full-width space-letters">
+        <Category
+          transitionNum={0}
+          header="Professional"
+          div1="Slalom Build"
+          first={{
+            label: "Senior Software Engineer",
+            duration: "(Feb 2022 - June 2023)",
+            contents: [
+              {
+                text: "Worked on various slices of monolithic application for main POS web app of major telecom company",
+                postText: "(Angular/Testing/Analytics)",
+              },
+              {
+                text: "Refactored legacy code and fixed/documented bugs to prepare for client handoff",
+              },
+              {
+                text: "Led optimization of end-to-end testing infrastructure to reduce pipeline testing time by 30%",
+              },
+              {
+                text: "Implemented Google Analytics to track user-flows, prevent failures, and identify areas of improvement",
+              },
+              {
+                text: "Led pilot team for enabling utilization of existing Angular web components within mobile application web-view",
+              },
+            ],
+          }}
+          second={{
+            label: "Software Engineer",
+            duration: "(Aug 2019- Feb 2022)",
+            contents: [
+              {
+                text: "Worked on various microservice teams in re-platforming efforts for large mortgage company",
+                postText: "(React/NodeJS/AWS/GraphQL)",
+              },
+              {
+                text: "Built and managed React UI component library (used across dozens of teams)",
+              },
+              {
+                text: "Developed system to convert 30+ configuration spreadsheets into individual React micro-apps for separate loan processes, connected to a shared AWS API",
+              },
+              {
+                text: "Worked on greenfield team for engineering proof-of-concept fullstack microservices for business to determine resource allocation",
+              },
+              {
+                text: "Served as SME for developing new microservices using client loan application environment",
+              },
+            ],
+          }}
+          third={{
+            label: "Software Engineering Intern",
+            duration: "(2018)",
+            contents: [
+              {
+                text: "Worked on internal portal for facilitating communication, scheduling and resource-sharing between recruiters and job candidates",
+                postText: "(Angular/AWS)",
+              },
+            ],
+          }}
+        />
+        <Category
+          transitionNum={1}
+          header="Other Projects"
+          first={{
+            label: "Barin Noter",
+            duration: "(2020 - Present)",
+            contents: [
+              {
+                text: "Progressive web app for productive note-taking which tracks to-do items and calendar items",
+                postText: "(React/NodeJS/AWS/Hosting/Deployment)",
+              },
+              {
+                text: "notes.barin-yoder.com/about",
+                isLink: true,
+                fillBullet: true,
+              },
+              {
+                text: "AWS for hosting and backend",
+              },
+              {
+                text: "Frontend built with React",
+              },
+            ],
+          }}
+          second={{
+            label: "JumboCode",
+            duration: "(2018-2019)",
+            contents: [
+              {
+                text: "Lead frontend developer for building anonymous messaging hotline for campus mental-health group",
+                postText: "(HTML/CSS/Javascript)",
+              },
+            ],
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Experience;
+
+type Section = {
+  label: string;
+  duration: string;
+  contents: {
+    fillBullet?: boolean;
+    isLink?: boolean;
+    text: string;
+    postText?: string;
+  }[];
+};
+
+const Category = (props: {
+  div1?: string;
+  transitionNum: number;
+  header: string;
+  first: Section;
+  second?: Section;
+  third?: Section;
+}) => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+
+  const [collapsed, setCollapsed] = useState(true);
+  const [thirdCollapsed, setThirdCollapsed] = useState(true);
+  const [secondCollapsed, setSecondCollapsed] = useState(true);
+  const [firstCollapsed, setFirstCollapsed] = useState(true);
+  const [thirdHovering, setThirdHovering] = useState(false);
+  const [secondHovering, setSecondHovering] = useState(false);
+  const [firstHovering, setFirstHovering] = useState(false);
+  const [headerHovering, setHeaderHovering] = useState(false);
 
   const { opacities } = useOpacityOnMount({
     ms: TRANSITION_MS / 2,
@@ -35,419 +152,294 @@ function Experience() {
 
   return (
     <div
-      style={{ height: `100%` }}
-      id="experience"
-      className="h-m-50 flex col full-width align-center"
+      className={`m-1 flex col br-default width-clamp-800 ${
+        !opacities[props.transitionNum + 1]
+          ? "animated-border-placeholder"
+          : collapsed
+          ? "animated-border-card-white"
+          : "animated-border-mask-active-card-white"
+      }`}
+      style={{
+        opacity: opacities[props.transitionNum],
+        transition: TRANSITION_MS / 2 + "ms",
+      }}
     >
-      <span
-        className="h-m-1 mega-font-size border-radius-default h-p-1 blue"
+      <div
+        className={classnames(
+          "flex",
+          "row",
+          "pointer",
+          "full-width",
+          "dark-hombre-horiz",
+          !collapsed && "header-border-white"
+        )}
+        onMouseOver={() => setHeaderHovering(true)}
+        onMouseOut={() => setHeaderHovering(false)}
+        onClick={() => setCollapsed(current => !current)}
         style={{
-          backgroundColor: `rgba(0,0,0,0.1)`,
-          width: "fit-content",
+          position: "sticky",
+          top: "0px",
+          zIndex: 2,
         }}
+        ref={headerRef}
       >
-        Experience
-      </span>
-      <div className="flex row wrap align-start justify-center full-width space-letters">
-        <div
-          className={`m-1 flex col dark-hombre-vert border-radius-default width-clamp-800 ${
-            !opacities[1]
-              ? "animated-border-placeholder"
-              : professionalCollapsed
-              ? "animated-border-white"
-              : "animated-border-mask-active-white"
-          }`}
-          style={{
-            opacity: opacities[0],
-            transition: TRANSITION_MS / 2 + "ms",
+        <CollapseButton
+          noBackground
+          noOutline
+          size="large"
+          collapsed={collapsed}
+          collapsedOrientation="right"
+          onClick={e => {
+            e.stopPropagation();
+            setCollapsed(current => !current);
           }}
-        >
-          <div
-            className="flex row pointer full-width"
-            onMouseOver={() => setProfessionalHeaderHovering(true)}
-            onMouseOut={() => setProfessionalHeaderHovering(false)}
-            onClick={() => setProfessionalCollapsed((current) => !current)}
-          >
-            <CollapseButton
-              noBackground
-              noOutline
-              size="large"
-              collapsed={professionalCollapsed}
-              collapsedOrientation="right"
-              onClick={(e) => {
-                e.stopPropagation();
-                setProfessionalCollapsed((current) => !current);
-              }}
-              color="lightGrey"
-              forceHoverState={professionalHeaderHovering}
-            />
-            <span className="v-m-1 subheader-font-size pointer italic">
-              Professional
-            </span>
-          </div>
-          <div
-            style={{
-              transition: "max-height 400ms",
-              maxHeight: professionalCollapsed ? 0 : "100vh",
-              overflowY: "scroll",
-              overflowX: "hidden",
-            }}
-            // className={'hide-scrollbar-visual'}
-          >
-            {!professionalCollapsed && (
-              <div className="flex col h-m-1 text-font-size">
-                <span className="m-b-1 m-l-1">Slalom Build</span>
-                <div className="m-l-1 m-b-1">
-                  <div className="flex row align-start">
-                    <CollapseButton
-                      noBackground
-                      noOutline
-                      size="small"
-                      collapsed={professionalSeniorCollapsed}
-                      collapsedOrientation="right"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setProfessionalSeniorCollapsed((current) => !current);
-                      }}
-                      color="grey"
-                      forceHoverState={professionalSeniorHovering}
-                    />
-                    <div className="flex row wrap v-m-15">
-                      <span
-                        onMouseOver={() => setProfessionalSeniorHovering(true)}
-                        onMouseOut={() => setProfessionalSeniorHovering(false)}
-                        onClick={() =>
-                          setProfessionalSeniorCollapsed((current) => !current)
-                        }
-                        className="pointer p-r-1"
-                      >
-                        Senior Software Engineer{" "}
+          color="lightGrey"
+          forceHoverState={headerHovering}
+        />
+        <span className="v-m-1 subheader-font pointer italic">
+          {props.header}
+        </span>
+      </div>
+      <div className={"dark-hombre-horiz"}>
+        {!collapsed && (
+          <div className="flex col h-m-1 text-font">
+            {props.div1 && (
+              <span
+                className="m-b-1 m-l-1 full-width dark-hombre-horiz"
+                style={{
+                  position: "sticky",
+                  top: headerRef.current?.offsetHeight || 65,
+                  zIndex: 2,
+                  borderBottom: "1px solid var(--grey)",
+                }}
+                ref={div1Ref}
+              >
+                {props.div1}
+              </span>
+            )}
+            <div className="m-l-1 m-b-1">
+              <div
+                className="flex row align-center dark-hombre-horiz"
+                style={{
+                  position: "sticky",
+                  top:
+                    (headerRef.current?.offsetHeight || 65) +
+                    (div1Ref.current?.offsetHeight || 0) -
+                    1,
+                  zIndex: 1,
+                  borderBottom: "1px solid var(--grey)",
+                }}
+              >
+                <CollapseButton
+                  noBackground
+                  noOutline
+                  size="small"
+                  collapsed={firstCollapsed}
+                  collapsedOrientation="right"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setFirstCollapsed(current => !current);
+                  }}
+                  color="grey"
+                  forceHoverState={firstHovering}
+                />
+                <div className="flex row wrap v-m-15">
+                  <span
+                    onMouseOver={() => setFirstHovering(true)}
+                    onMouseOut={() => setFirstHovering(false)}
+                    onClick={() => setFirstCollapsed(current => !current)}
+                    className="pointer p-r-1"
+                  >
+                    {props.first.label}{" "}
+                  </span>
+                  <span
+                    onMouseOver={() => setFirstHovering(true)}
+                    onMouseOut={() => setFirstHovering(false)}
+                    onClick={() => setFirstCollapsed(current => !current)}
+                    className="pointer light-grey"
+                  >
+                    {props.first.duration}
+                  </span>
+                </div>
+              </div>
+              {!firstCollapsed && (
+                <ul className="circle-list light-grey m-l-1">
+                  <li className="m-b-1 white">
+                    {props.first.contents[0].text}{" "}
+                    {props.first.contents[0].postText && (
+                      <span className="blue">
+                        {props.first.contents[0].postText}
                       </span>
-                      <span
-                        onMouseOver={() => setProfessionalSeniorHovering(true)}
-                        onMouseOut={() => setProfessionalSeniorHovering(false)}
-                        onClick={() =>
-                          setProfessionalSeniorCollapsed((current) => !current)
-                        }
-                        className="pointer light-grey"
+                    )}
+                  </li>
+                  {props.first.contents.slice(1).length > 0 &&
+                    props.first.contents.slice(1).map(liContent => (
+                      <li
+                        className={`m-b-50 light-grey ${
+                          liContent.fillBullet ? "circle-fill-list" : ""
+                        }`}
                       >
-                        (Feb 2022 - June 2023)
-                      </span>
-                    </div>
+                        {liContent.isLink ? (
+                          <a
+                            className="blue"
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://notes.barin-yoder.com/about"
+                          >
+                            notes.barin-yoder.com/about
+                          </a>
+                        ) : (
+                          liContent.text
+                        )}{" "}
+                        {liContent.postText && (
+                          <span className="grey">{liContent.postText}</span>
+                        )}
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+            {props.second && (
+              <div className="m-l-1 m-b-1">
+                <div
+                  className="flex row align-center dark-hombre-horiz"
+                  style={{
+                    position: "sticky",
+                    top:
+                      (headerRef.current?.offsetHeight || 65) +
+                      (div1Ref.current?.offsetHeight || 0) -
+                      1,
+                    zIndex: 1,
+                    borderBottom: "1px solid var(--grey)",
+                  }}
+                >
+                  <CollapseButton
+                    noBackground
+                    noOutline
+                    size="small"
+                    collapsed={secondCollapsed}
+                    collapsedOrientation="right"
+                    onClick={e => {
+                      e.stopPropagation();
+                      setSecondCollapsed(current => !current);
+                    }}
+                    color="grey"
+                    forceHoverState={secondHovering}
+                  />
+                  <div className="flex row wrap v-m-15">
+                    <span
+                      onMouseOver={() => setSecondHovering(true)}
+                      onMouseOut={() => setSecondHovering(false)}
+                      onClick={() => setSecondCollapsed(current => !current)}
+                      className="pointer p-r-1"
+                    >
+                      {props.second.label}{" "}
+                    </span>
+                    <span
+                      onMouseOver={() => setSecondHovering(true)}
+                      onMouseOut={() => setSecondHovering(false)}
+                      onClick={() => setSecondCollapsed(current => !current)}
+                      className="pointer light-grey"
+                    >
+                      {props.second.duration}
+                    </span>
                   </div>
-                  {!professionalSeniorCollapsed && (
-                    <ul className="circle-list light-grey m-l-1">
-                      <li className="m-b-1 white">
-                        Worked on various slices of monolithic application for
-                        main POS web app of major telecom company{" "}
+                </div>
+                {!secondCollapsed && (
+                  <ul className="circle-list light-grey m-l-1">
+                    <li className="m-b-1 white">
+                      {props.second.contents[0].text}{" "}
+                      {props.second.contents[0].postText && (
                         <span className="blue">
-                          (Angular/Testing/Analytics)
+                          {props.second.contents[0].postText}
                         </span>
-                      </li>
-                      <li className="m-b-33">
-                        Refactored legacy code and fixed/documented bugs to
-                        prepare for client handoff
-                      </li>
-                      <li className="m-b-33">
-                        Led optimization of end-to-end testing infrastructure to
-                        reduce pipeline testing time by 30%
-                      </li>
-                      <li className="m-b-33">
-                        Implemented Google Analytics to track user-flows,
-                        prevent failures, and identify areas of improvement
-                      </li>
-                      <li className="m-b-33">
-                        Led pilot team for enabling utilization of existing
-                        Angular web components within mobile application
-                        web-view
-                      </li>
-                    </ul>
-                  )}
-                </div>
-                <div className="m-l-1 m-b-1">
-                  <div className="flex row align-start">
-                    <CollapseButton
-                      noBackground
-                      noOutline
-                      size="small"
-                      collapsed={professionalJuniorCollapsed}
-                      collapsedOrientation="right"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setProfessionalJuniorCollapsed((current) => !current);
-                      }}
-                      color="grey"
-                      forceHoverState={professionalJuniorHovering}
-                    />
-                    <div className="flex row wrap v-m-15">
-                      <span
-                        onMouseOver={() => setProfessionalJuniorHovering(true)}
-                        onMouseOut={() => setProfessionalJuniorHovering(false)}
-                        onClick={() =>
-                          setProfessionalJuniorCollapsed((current) => !current)
-                        }
-                        className="pointer p-r-1"
-                      >
-                        Software Engineer{" "}
-                      </span>
-                      <span
-                        onMouseOver={() => setProfessionalJuniorHovering(true)}
-                        onMouseOut={() => setProfessionalJuniorHovering(false)}
-                        onClick={() =>
-                          setProfessionalJuniorCollapsed((current) => !current)
-                        }
-                        className="pointer light-grey"
-                      >
-                        (Aug 2019- Feb 2022)
-                      </span>
-                    </div>
+                      )}
+                    </li>
+                    {props.second.contents.slice(1).length > 0 &&
+                      props.second.contents.slice(1).map(liContent => (
+                        <li className="m-b-50 light-grey">
+                          {liContent.text}{" "}
+                          {liContent.postText && (
+                            <span className="grey">{liContent.postText}</span>
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {props.third && (
+              <div className="m-l-1 m-b-1">
+                <div
+                  className="flex row align-center dark-hombre-horiz"
+                  style={{
+                    position: "sticky",
+                    top:
+                      (headerRef.current?.offsetHeight || 65) +
+                      (div1Ref.current?.offsetHeight || 0) -
+                      1,
+                    zIndex: 1,
+                    borderBottom: "1px solid var(--grey)",
+                  }}
+                >
+                  <CollapseButton
+                    noBackground
+                    noOutline
+                    size="small"
+                    collapsed={thirdCollapsed}
+                    collapsedOrientation="right"
+                    onClick={e => {
+                      e.stopPropagation();
+                      setThirdCollapsed(current => !current);
+                    }}
+                    color="grey"
+                    forceHoverState={thirdHovering}
+                  />
+                  <div className="flex row wrap v-m-15">
+                    <span
+                      onMouseOver={() => setThirdHovering(true)}
+                      onMouseOut={() => setThirdHovering(false)}
+                      onClick={() => setThirdCollapsed(current => !current)}
+                      className="pointer p-r-1"
+                    >
+                      {props.third.label}{" "}
+                    </span>
+                    <span
+                      onMouseOver={() => setThirdHovering(true)}
+                      onMouseOut={() => setThirdHovering(false)}
+                      onClick={() => setThirdCollapsed(current => !current)}
+                      className="pointer light-grey"
+                    >
+                      {props.third.duration}
+                    </span>
                   </div>
-                  {!professionalJuniorCollapsed && (
-                    <ul className="circle-list light-grey m-l-1">
-                      <li className="m-b-1 white">
-                        Worked on various microservice teams in re-platforming
-                        efforts for large mortgage company{" "}
-                        <span className="blue">(React/NodeJS/AWS/GraphQL)</span>
-                      </li>
-                      <li className="m-b-33">
-                        Built and managed React UI component library (used
-                        across dozens of teams)
-                      </li>
-                      <li className="m-b-33">
-                        Developed system to convert 30+ configuration
-                        spreadsheets into individual React micro-apps for
-                        separate loan processes, connected to a shared AWS API
-                      </li>
-                      <li className="m-b-33">
-                        Worked on greenfield team for engineering
-                        proof-of-concept fullstack microservices for business to
-                        determine resource allocation
-                      </li>
-                      <li className="m-b-33">
-                        Served as SME for developing new microservices using
-                        client loan application environment
-                      </li>
-                    </ul>
-                  )}
                 </div>
-                <div className="m-l-1 m-b-1">
-                  <div className="flex row align-start">
-                    <CollapseButton
-                      noBackground
-                      noOutline
-                      size="small"
-                      collapsed={professionalInternCollapsed}
-                      collapsedOrientation="right"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setProfessionalInternCollapsed((current) => !current);
-                      }}
-                      color="grey"
-                      forceHoverState={professionalInternHovering}
-                    />
-                    <div className="flex row wrap v-m-15">
-                      <span
-                        onMouseOver={() => setProfessionalInternHovering(true)}
-                        onMouseOut={() => setProfessionalInternHovering(false)}
-                        onClick={() =>
-                          setProfessionalInternCollapsed((current) => !current)
-                        }
-                        className="pointer p-r-1"
-                      >
-                        Software Engineering Intern{" "}
-                      </span>
-                      <span
-                        onMouseOver={() => setProfessionalInternHovering(true)}
-                        onMouseOut={() => setProfessionalInternHovering(false)}
-                        onClick={() =>
-                          setProfessionalInternCollapsed((current) => !current)
-                        }
-                        className="pointer light-grey"
-                      >
-                        (2018)
-                      </span>
-                    </div>
-                  </div>
-                  {!professionalInternCollapsed && (
-                    <ul className="circle-list light-grey m-l-1">
-                      <li className="white">
-                        Worked on internal portal for facilitating
-                        communication, scheduling and resource-sharing between
-                        recruiters and job candidates{" "}
-                        <span className="blue">(Angular/AWS)</span>
-                      </li>
-                    </ul>
-                  )}
-                </div>
+                {!thirdCollapsed && (
+                  <ul className="circle-list light-grey m-l-1">
+                    <li className="m-b-1 white">
+                      {props.third.contents[0].text}{" "}
+                      {props.third.contents[0].postText && (
+                        <span className="blue">
+                          {props.third.contents[0].postText}
+                        </span>
+                      )}
+                    </li>
+                    {props.third.contents.slice(1).length > 0 &&
+                      props.third.contents.slice(1).map(liContent => (
+                        <li className="m-b-50 light-grey">
+                          {liContent.text}{" "}
+                          {liContent.postText && (
+                            <span className="grey">{liContent.postText}</span>
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                )}
               </div>
             )}
           </div>
-        </div>
-        <div
-          className={`m-1 flex col dark-hombre-vert border-radius-default width-clamp-800 ${
-            !opacities[2]
-              ? "animated-border-placeholder"
-              : personalCollapsed
-              ? "animated-border-white"
-              : "animated-border-mask-active-white"
-          }`}
-          style={{
-            opacity: opacities[1],
-            transition: TRANSITION_MS / 2 + "ms",
-          }}
-        >
-          <div
-            className="flex row pointer full-width"
-            onMouseOver={() => setPersonalHeaderHovering(true)}
-            onMouseOut={() => setPersonalHeaderHovering(false)}
-            onClick={() => setPersonalCollapsed((current) => !current)}
-          >
-            <CollapseButton
-              noBackground
-              noOutline
-              size="large"
-              collapsed={personalCollapsed}
-              collapsedOrientation="right"
-              onClick={(e) => {
-                e.stopPropagation();
-                setPersonalCollapsed((current) => !current);
-              }}
-              color="lightGrey"
-              forceHoverState={personalHeaderHovering}
-            />
-            <span className="v-m-1 subheader-font-size italic">
-              Personal Projects
-            </span>
-          </div>
-          <div
-            style={{
-              transition: "max-height 400ms",
-              maxHeight: personalCollapsed ? 0 : "100vh",
-            }}
-            className={"hide-scrollbar-visual"}
-          >
-            {!personalCollapsed && (
-              <div className="flex col h-m-1 text-font-size">
-                <div className="m-l-1 m-b-1">
-                  <div className="flex row align-start">
-                    <CollapseButton
-                      noBackground
-                      noOutline
-                      size="small"
-                      collapsed={personalBarinCollapsed}
-                      collapsedOrientation="right"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setPersonalBarinCollapsed((current) => !current);
-                      }}
-                      color="grey"
-                      forceHoverState={personalBarinHovering}
-                    />
-                    <div className="flex row wrap v-m-15">
-                      <span
-                        onMouseOver={() => setPersonalBarinHovering(true)}
-                        onMouseOut={() => setPersonalBarinHovering(false)}
-                        onClick={() =>
-                          setPersonalBarinCollapsed((current) => !current)
-                        }
-                        className="pointer p-r-1"
-                      >
-                        Barin Noter{" "}
-                      </span>
-                      <span
-                        onMouseOver={() => setPersonalBarinHovering(true)}
-                        onMouseOut={() => setPersonalBarinHovering(false)}
-                        onClick={() =>
-                          setPersonalBarinCollapsed((current) => !current)
-                        }
-                        className="pointer light-grey"
-                      >
-                        (2020-Present)
-                      </span>
-                    </div>
-                  </div>
-                  {!personalBarinCollapsed && (
-                    <ul className="circle-list light-grey m-l-1">
-                      <li className="m-b-1 white">
-                        Progressive web app for taking notes, with ability to
-                        create/update inline to-do and calendar items to track
-                        at a high level{" "}
-                        <span className="blue">
-                          (React/NodeJS/AWS/Hosting/Deployment)
-                        </span>
-                      </li>
-                      <li className="m-b-33">
-                        AWS for hosting and backend services
-                      </li>
-                      <li className="m-b-33">Frontend built with React</li>
-                      <li className="m-b-33 circle-fill-list">
-                        <a
-                          className="blue"
-                          target="_blank"
-                          rel="noreferrer"
-                          href="https://notes.barin-yoder.com/about"
-                        >
-                          notes.barin-yoder.com/about
-                        </a>
-                      </li>
-                    </ul>
-                  )}
-                </div>
-                <div className="m-l-1 m-b-1">
-                  <div className="flex row align-start">
-                    <CollapseButton
-                      noBackground
-                      noOutline
-                      size="small"
-                      collapsed={personalJumbocodeCollapsed}
-                      collapsedOrientation="right"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setPersonalJumbocodeCollapsed((current) => !current);
-                      }}
-                      color="grey"
-                      forceHoverState={personalJumbocodeHovering}
-                    />
-                    <div className="flex row wrap v-m-15">
-                      <span
-                        onMouseOver={() => setPersonalJumbocodeHovering(true)}
-                        onMouseOut={() => setPersonalJumbocodeHovering(false)}
-                        onClick={() =>
-                          setPersonalJumbocodeCollapsed((current) => !current)
-                        }
-                        className="pointer p-r-1"
-                      >
-                        Jumbocode{" "}
-                      </span>
-                      <span
-                        onMouseOver={() => setPersonalJumbocodeHovering(true)}
-                        onMouseOut={() => setPersonalJumbocodeHovering(false)}
-                        onClick={() =>
-                          setPersonalJumbocodeCollapsed((current) => !current)
-                        }
-                        className="pointer light-grey"
-                      >
-                        (2018-2019)
-                      </span>
-                    </div>
-                  </div>
-                  {!personalJumbocodeCollapsed && (
-                    <ul className="circle-list light-grey m-l-1">
-                      <li className="m-b-33">
-                        Lead frontend developer for building anonymous messaging
-                        hotline for campus mental-health group{" "}
-                        <span className="blue">(HTML/CSS/Javascript)</span>
-                      </li>
-                    </ul>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
-}
-
-export default Experience;
+};

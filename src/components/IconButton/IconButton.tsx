@@ -28,7 +28,7 @@ const StyledButton = styled.button`
     border-radius: var(--icon-button-border-radius);
   }
 
-  &.no-background {
+  &.no-bg {
     background: none !important;
   }
   &:hover {
@@ -298,7 +298,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             ? 0
             : -1
         }
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           handlePress(e, () => handleClick(e));
         }}
         onClick={!confirm && !toggleProps ? handleClick : undefined}
@@ -313,7 +313,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           hovering && !(toggleProps || (confirm && confirmationState))
             ? hoverClassName
             : ""
-        } ${noOutline && "no-outline"} ${noBackground && "no-background"} ${
+        } ${noOutline && "no-outline"} ${noBackground && "no-bg"} ${
           square && "square"
         } ${untabbable ? "untabbable" : "pointer"}
         ${confirmClassName && confirmationState ? confirmClassName : ""}`}
@@ -347,7 +347,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             size={sizeNum}
             onMouseEnter={() => setConfirmHovering(true)}
             onMouseLeave={() => setConfirmHovering(false)}
-            onKeyDown={(e) =>
+            onKeyDown={e =>
               handlePress(e, () => setConfirmationState(undefined))
             }
             onClick={() => setConfirmationState(undefined)}
@@ -364,7 +364,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           <Icons.QuestionCircle
             tabIndex={untabbable ? -1 : 0}
             size={sizeNum}
-            onKeyDown={(e) =>
+            onKeyDown={e =>
               handlePress(e, () => setConfirmationState(undefined))
             }
             onClick={() => setConfirmationState(undefined)}
@@ -377,7 +377,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           <Icons.ExclamationCircleFill
             tabIndex={untabbable ? -1 : 0}
             size={sizeNum}
-            onKeyDown={(e) =>
+            onKeyDown={e =>
               handlePress(e, () => setConfirmationState(undefined))
             }
             onClick={() => setConfirmationState(undefined)}
@@ -390,7 +390,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           <toggleProps.secondIcon
             tabIndex={untabbable ? -1 : 0}
             onClick={handleSecondClick}
-            onKeyDown={(e) => handlePress(e, () => handleSecondClick(e))}
+            onKeyDown={e => handlePress(e, () => handleSecondClick(e))}
             onMouseEnter={() => setSecondHovering(true)}
             onMouseLeave={() => setSecondHovering(false)}
             className={`icon-component selectable ${secondColorClass} 
@@ -412,7 +412,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           <toggleProps.thirdIcon
             tabIndex={untabbable ? -1 : 0}
             onClick={handleThirdClick}
-            onKeyDown={(e) => handlePress(e, () => handleThirdClick(e))}
+            onKeyDown={e => handlePress(e, () => handleThirdClick(e))}
             onMouseEnter={() => setThirdHovering(true)}
             onMouseLeave={() => setThirdHovering(false)}
             className={`icon-component selectable ${thirdColorClass} 

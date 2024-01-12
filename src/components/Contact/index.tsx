@@ -23,9 +23,9 @@ function Contact() {
   }, [copySuccessRender]);
   return (
     <>
-      <span className="v-m-1 mega-font-size center-text blue">Contact</span>
+      <span className="v-m-1 mega-font center-text blue">Contact</span>
 
-      <ul className="flex col text-font-size m-1">
+      <ul className="flex col text-font m-1">
         <li
           style={{
             opacity: opacities[0],
@@ -46,7 +46,7 @@ function Contact() {
               noBackground
               noOutline
               size="small"
-              className="grey-border thin dark-grey-background"
+              className="grey-border thin dark-grey-bg"
             />
           </div>
         </li>
