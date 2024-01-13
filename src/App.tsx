@@ -15,7 +15,7 @@ function App() {
       <div
         style={{
           maxWidth: "100%",
-          //overflow: "hidden auto",
+          overflow: "hidden auto",
         }}
         id="App"
         className="relative full-width"
