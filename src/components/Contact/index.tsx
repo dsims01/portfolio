@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import useOpacityOnMount from "../../hooks/useOpacityOnMount";
 import IconButton from "../IconButton/IconButton";
-import { Icons } from "../IconButton/icons";
+import { Icons } from "../IconButton/consts";
 
 function Contact() {
   const { opacities } = useOpacityOnMount({

@@ -7,7 +7,7 @@ import classnames from "classnames";
 function Experience() {
   return (
     <div
-      style={{ height: `100%`, zIndex: 1 }}
+      style={{ height: `100%`, zIndex: 1, justifySelf: "flex-start" }}
       id="experience"
       className="flex col full-width align-center relative"
     >
@@ -85,7 +85,7 @@ function Experience() {
               },
               {
                 text: "notes.barin-yoder.com/about",
-                isLink: true,
+                link: "https://notes.barin-yoder.com/about",
                 fillBullet: true,
               },
               {
@@ -119,7 +119,7 @@ type Section = {
   duration: string;
   contents: {
     fillBullet?: boolean;
-    isLink?: boolean;
+    link?: string;
     text: string;
     postText?: string;
   }[];
@@ -202,24 +202,25 @@ const Category = (props: {
       </div>
       <div className={"dark-hombre-horiz"}>
         {!collapsed && (
-          <div className="flex col h-m-1 text-font">
+          <div className="flex col smaller-font">
             {props.div1 && (
               <span
-                className="m-b-1 m-l-1 full-width dark-hombre-horiz"
+                className="p-l-1 v-p-50 dark-hombre-horiz"
                 style={{
                   position: "sticky",
                   top: headerRef.current?.offsetHeight || 65,
                   zIndex: 2,
-                  borderBottom: "1px solid var(--grey)",
+                  borderBottom: "1px solid var(--dark-grey)",
+                  borderTop: "1px solid var(--grey)",
                 }}
                 ref={div1Ref}
               >
                 {props.div1}
               </span>
             )}
-            <div className="m-l-1 m-b-1">
+            <div>
               <div
-                className="flex row align-center dark-hombre-horiz"
+                className="flex row align-center dark-hombre-horiz p-l-1"
                 style={{
                   position: "sticky",
                   top:
@@ -227,7 +228,8 @@ const Category = (props: {
                     (div1Ref.current?.offsetHeight || 0) -
                     1,
                   zIndex: 1,
-                  borderBottom: "1px solid var(--grey)",
+                  borderBottom: "1px solid var(--dark-grey)",
+                  borderTop: "1px solid var(--grey)",
                 }}
               >
                 <CollapseButton
@@ -263,11 +265,11 @@ const Category = (props: {
                 </div>
               </div>
               {!firstCollapsed && (
-                <ul className="circle-list light-grey m-l-1">
+                <ul className="circle-list light-grey m-l-2">
                   <li className="m-b-1 white">
                     {props.first.contents[0].text}{" "}
                     {props.first.contents[0].postText && (
-                      <span className="blue">
+                      <span className="blue" style={{ wordWrap: "break-word" }}>
                         {props.first.contents[0].postText}
                       </span>
                     )}
@@ -279,14 +281,14 @@ const Category = (props: {
                           liContent.fillBullet ? "circle-fill-list" : ""
                         }`}
                       >
-                        {liContent.isLink ? (
+                        {liContent.link ? (
                           <a
                             className="blue"
                             target="_blank"
                             rel="noreferrer"
-                            href="https://notes.barin-yoder.com/about"
+                            href={liContent.link}
                           >
-                            notes.barin-yoder.com/about
+                            {liContent.text}
                           </a>
                         ) : (
                           liContent.text
@@ -300,9 +302,9 @@ const Category = (props: {
               )}
             </div>
             {props.second && (
-              <div className="m-l-1 m-b-1">
+              <div>
                 <div
-                  className="flex row align-center dark-hombre-horiz"
+                  className="flex row align-center dark-hombre-horiz p-l-1"
                   style={{
                     position: "sticky",
                     top:
@@ -310,7 +312,8 @@ const Category = (props: {
                       (div1Ref.current?.offsetHeight || 0) -
                       1,
                     zIndex: 1,
-                    borderBottom: "1px solid var(--grey)",
+                    borderBottom: "1px solid var(--dark-grey)",
+                    borderTop: "1px solid var(--grey)",
                   }}
                 >
                   <CollapseButton
@@ -346,11 +349,14 @@ const Category = (props: {
                   </div>
                 </div>
                 {!secondCollapsed && (
-                  <ul className="circle-list light-grey m-l-1">
+                  <ul className="circle-list light-grey m-l-2">
                     <li className="m-b-1 white">
                       {props.second.contents[0].text}{" "}
                       {props.second.contents[0].postText && (
-                        <span className="blue">
+                        <span
+                          className="blue"
+                          style={{ wordWrap: "break-word" }}
+                        >
                           {props.second.contents[0].postText}
                         </span>
                       )}
@@ -369,9 +375,9 @@ const Category = (props: {
               </div>
             )}
             {props.third && (
-              <div className="m-l-1 m-b-1">
+              <div>
                 <div
-                  className="flex row align-center dark-hombre-horiz"
+                  className="flex row align-center dark-hombre-horiz p-l-1"
                   style={{
                     position: "sticky",
                     top:
@@ -379,7 +385,8 @@ const Category = (props: {
                       (div1Ref.current?.offsetHeight || 0) -
                       1,
                     zIndex: 1,
-                    borderBottom: "1px solid var(--grey)",
+                    borderBottom: "1px solid var(--dark-grey)",
+                    borderTop: "1px solid var(--grey)",
                   }}
                 >
                   <CollapseButton
@@ -415,11 +422,14 @@ const Category = (props: {
                   </div>
                 </div>
                 {!thirdCollapsed && (
-                  <ul className="circle-list light-grey m-l-1">
+                  <ul className="circle-list light-grey m-l-2">
                     <li className="m-b-1 white">
                       {props.third.contents[0].text}{" "}
                       {props.third.contents[0].postText && (
-                        <span className="blue">
+                        <span
+                          className="blue"
+                          style={{ wordWrap: "break-word" }}
+                        >
                           {props.third.contents[0].postText}
                         </span>
                       )}

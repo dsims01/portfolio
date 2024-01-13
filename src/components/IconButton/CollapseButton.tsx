@@ -1,6 +1,7 @@
 import React from "react";
-import { Icons } from "./icons";
+import { Icons } from "../IconButton/consts";
 import IconButton, { IconButtonProps } from "./IconButton";
+import { isMobile } from "react-device-detect";
 
 type Orientation = "up" | "down" | "left" | "right";
 type CollapseButtonProps = Partial<IconButtonProps> & {
@@ -20,12 +21,11 @@ function CollapseButton(props: CollapseButtonProps) {
   return (
     <IconButton
       {...props}
-      className={
-        `collapse-icon ${props.collapseClockwise ? "" : "counter-clockwise"} ${
-          props.collapsed ? "collapsed" : "expanded"
-        } ${props.forceHoverState ? "force-hover" : ""} ` +
-        (props.className || "")
-      }
+      className={`collapse-icon ${isMobile ? "mobile" : ""} ${
+        props.collapseClockwise ? "" : "counter-clockwise"
+      } ${props.collapsed ? "collapsed" : "expanded"} ${
+        props.forceHoverState ? "hover" : ""
+      } ${props.className || ""}`}
       icon={icon}
     />
   );

@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import IconButton from "../IconButton/IconButton";
-import { Icons } from "../IconButton/icons";
+import { Icons } from "../IconButton/consts";
 import { useOutsideAlerter } from "../OutsideAlerter/OutsideAlerter";
 
 export enum PATHS {
@@ -36,7 +36,18 @@ function Navbar() {
           }
           to={PATHS.HOME}
         >
-          <span>Home</span>
+          <IconButton
+            icon={Icons.Home}
+            color="lightGrey"
+            hoverColor="lightGrey"
+            exactSize={20}
+            className="smaller-font pointer"
+            untabbable
+            noBackground
+            noOutline
+            padding={2}
+            rightText="Derek Sims"
+          />
         </Link>
         <Link
           className={
@@ -47,7 +58,18 @@ function Navbar() {
           }
           to={PATHS.ABOUT}
         >
-          <span>About</span>
+          <IconButton
+            icon={Icons.User}
+            color="lightGrey"
+            hoverColor="lightGrey"
+            exactSize={20}
+            className="smaller-font pointer"
+            untabbable
+            noBackground
+            noOutline
+            padding={2}
+            rightText="About"
+          />
         </Link>
         <Link
           className={
@@ -58,7 +80,18 @@ function Navbar() {
           }
           to={PATHS.EXPERIENCE}
         >
-          <span>Experience</span>
+          <IconButton
+            icon={Icons.Briefcase}
+            color="lightGrey"
+            hoverColor="lightGrey"
+            exactSize={20}
+            className="smaller-font pointer"
+            untabbable
+            noBackground
+            noOutline
+            padding={2}
+            rightText="Experience"
+          />
         </Link>
         <Link
           className={
@@ -69,7 +102,18 @@ function Navbar() {
           }
           to={PATHS.CONTACT}
         >
-          <span>Contact</span>
+          <IconButton
+            icon={Icons.Contact}
+            color="lightGrey"
+            hoverColor="lightGrey"
+            exactSize={20}
+            className="smaller-font pointer"
+            untabbable
+            noBackground
+            noOutline
+            padding={2}
+            rightText="Contact"
+          />
         </Link>
       </>
     ),
@@ -80,7 +124,7 @@ function Navbar() {
     <>
       <div
         id="navbar-big"
-        className="flex row space-between h-p-25 dark-hombre-vert"
+        className="flex row space-between h-p-25 dark-hombre-reverse-vert"
         style={{
           height: NAVBAR_HEIGHT,
           zIndex: 1,
@@ -100,47 +144,57 @@ function Navbar() {
       </div>
       <div
         id="navbar-small"
-        className="flex row space-between h-p-25 full-width"
+        className="full-width full-height absolute no-overflow"
         style={{
-          height: NAVBAR_HEIGHT,
-          zIndex: 1,
+          zIndex: 2,
+          maxWidth: "100%",
+          pointerEvents: "none",
         }}
       >
-        <Link to="/about">
-          <img
-            className="m-1 pointer"
-            src="headshot.png"
-            style={{ borderRadius: "50%", height: "35px", width: "35px" }}
-            alt="headshot"
-          />
-        </Link>
-        <div className="flex col">
-          <IconButton
-            icon={Icons.List}
-            onClick={e => {
-              e.stopPropagation();
-              e.preventDefault();
-              setSmallNavOpen(current => !current);
-            }}
-            size="large"
-            className="h-m-50 dark-hombre grey-border thin"
-            color="lightGrey"
-            hoverColor="white"
-          />
+        <div
+          className="flex row align-start space-between full-width dark-hombre-reverse-vert m-0"
+          style={{ height: NAVBAR_HEIGHT }}
+        >
+          <Link to="/about" style={{ pointerEvents: "all" }}>
+            <img
+              className="m-1 pointer"
+              src="headshot.png"
+              style={{ borderRadius: "50%", height: "35px", width: "35px" }}
+              alt="headshot"
+            />
+          </Link>
           <div
-            className="flex col dark-hombre-reverse-horiz p-50 br-default blue-border thin"
-            style={{
-              position: "absolute",
-              top: 0,
-              right: smallNavOpen
-                ? 0
-                : -1 * (popoutMenuRef.current?.offsetWidth || 150) + "px",
-              transition: "300ms",
-              zIndex: 3,
-            }}
-            ref={popoutMenuRef}
+            className="flex col"
+            style={{ maxWidth: "100%", pointerEvents: "all" }}
           >
-            {Links}
+            <IconButton
+              icon={Icons.List}
+              onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+                setSmallNavOpen(current => !current);
+              }}
+              size="large"
+              className="m-t-50 m-r-50 dark-hombre blue-border thin"
+              color="lightGrey"
+              hoverColor="white"
+              padding={2}
+            />
+            <div
+              className="flex col dark-hombre-reverse-horiz p-50 br-default blue-border thin"
+              style={{
+                position: "absolute",
+                top: 0,
+                right: smallNavOpen
+                  ? 0
+                  : -1 * (popoutMenuRef.current?.offsetWidth || 350) + "px",
+                transition: "300ms",
+                zIndex: 3,
+              }}
+              ref={popoutMenuRef}
+            >
+              {Links}
+            </div>
           </div>
         </div>
       </div>

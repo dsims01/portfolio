@@ -1,5 +1,5 @@
 import React from "react";
-import { Icons } from "./icons";
+import { Icons } from "../IconButton/consts";
 import IconButton, { IconButtonProps } from "./IconButton";
 
 function Loading(props: Partial<IconButtonProps> & { size: number | string }) {
@@ -7,7 +7,7 @@ function Loading(props: Partial<IconButtonProps> & { size: number | string }) {
     <IconButton
       noOutline
       {...props}
-      className={"loading-icon " + (props.className || "")}
+      className={"loading-icon no-overflow " + (props.className || "")}
       icon={Icons.Loading}
     />
   );

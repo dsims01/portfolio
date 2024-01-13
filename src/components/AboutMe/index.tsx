@@ -23,7 +23,7 @@ function AboutMe() {
           alt="headshot"
         />
       </div>
-      <div className="flex col h-m-1">
+      <div className="flex col m-t-1 h-m-1">
         <span
           className="light-grey smaller-font m-b-1 space-letters max-width-400"
           style={{

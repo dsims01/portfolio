@@ -19,10 +19,11 @@ function PageTransition(props: { children: React.ReactNode; path: string }) {
       >
         <div
           style={{
-            height: `calc(100% - ${NAVBAR_HEIGHT})`,
-            paddingTop: '30px'
+            minHeight: `calc(100vh - ${NAVBAR_HEIGHT})`,
+            maxWidth: "100%",
+            paddingTop: NAVBAR_HEIGHT,
           }}
-          className="flex col justify-center align-center"
+          className="flex col justify-start align-center full-width"
           ref={nodeRef}
         >
           {props.children}

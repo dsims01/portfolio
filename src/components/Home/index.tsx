@@ -29,7 +29,7 @@ function Homepage() {
       </div>
 
       <span
-        className="light-grey text-font m-b-1 space-letters"
+        className="light-grey text-font v-m-1 space-letters"
         style={{
           opacity: opacities[0],
           transition: TRANSITION_MS + "ms",

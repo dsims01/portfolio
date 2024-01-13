@@ -1,6 +1,5 @@
 import {
   AiFillCheckSquare,
-  AiFillExclamationCircle,
   AiFillStar,
   AiOutlineBorder,
   AiOutlinePlus,
@@ -9,7 +8,6 @@ import {
   AiOutlineUser,
   AiOutlineEllipsis,
   AiFillPushpin,
-  AiOutlinePercentage,
   AiFillSave,
   AiFillFolderAdd,
   AiOutlineMenu,
@@ -23,17 +21,25 @@ import {
   AiOutlineDeleteRow,
   AiOutlineCalculator,
   AiOutlineItalic,
+  AiFillFolder,
+  AiOutlineFolder,
+  AiFillFolderOpen,
+  AiOutlineInsertRowAbove,
+  AiOutlineInsertRowBelow,
+  AiOutlineInsertRowLeft,
+  AiOutlineInsertRowRight,
 } from "react-icons/ai";
 import {
   BiArrowToBottom,
   BiArrowToLeft,
   BiArrowToRight,
   BiArrowToTop,
+  BiBriefcase,
   BiChevronDown,
   BiChevronLeft,
   BiChevronRight,
   BiChevronUp,
-  BiCopyAlt,
+  BiEnvelope,
   BiExport,
   BiMessageX,
   BiMinus,
@@ -72,6 +78,11 @@ import {
   BsFullscreen,
   BsListColumnsReverse,
   BsTextLeft,
+  BsArrowRepeat,
+  BsSkipBackwardCircle,
+  BsCalendarCheck,
+  BsQuestionOctagon,
+  BsExclamationOctagonFill,
 } from "react-icons/bs";
 import {
   CgChevronDoubleDown,
@@ -93,7 +104,6 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaChevronUp,
-  FaFastBackward,
   FaLightbulb,
   FaToilet,
 } from "react-icons/fa";
@@ -102,30 +112,44 @@ import {
   GiPerspectiveDiceSixFacesRandom,
   GiPlasticDuck,
   GiBangingGavel,
+  GiNotebook,
 } from "react-icons/gi";
-import { GoTasklist, GoGoal, GoArrowSwitch } from "react-icons/go";
+import {
+  GoTasklist,
+  GoGoal,
+  GoArrowSwitch,
+  GoArrowUp,
+  GoArrowDown,
+} from "react-icons/go";
 import {
   HiBeaker,
   HiChevronDoubleLeft,
   HiChevronDoubleRight,
   HiLink,
+  HiOutlineEye,
   HiOutlineEyeOff,
+  HiPencil,
   HiPencilAlt,
   HiViewList,
 } from "react-icons/hi";
 import { HiEllipsisVertical } from "react-icons/hi2";
-import { ImPencil, ImStrikethrough } from "react-icons/im";
+import { ImStrikethrough } from "react-icons/im";
 import { LiaTrashRestoreAltSolid } from "react-icons/lia";
 import {
   LuCalendarClock,
+  LuCalendarPlus,
   LuCopy,
   LuCopyCheck,
+  LuFolderEdit,
+  LuLayoutGrid,
+  LuListTodo,
   LuSettings2,
   LuTextSelect,
 } from "react-icons/lu";
 import {
   MdChecklist,
   MdDeleteForever,
+  MdPercent,
   MdRefresh,
   MdRepeat,
   MdSettings,
@@ -136,16 +160,16 @@ import {
   TbArrowRightBar,
   TbArrowRightCircle,
   TbArrowsSort,
-  TbColumnInsertLeft,
-  TbColumnInsertRight,
   TbInfoSquare,
   TbListNumbers,
   TbListSearch,
   TbRepeatOff,
-  TbRowInsertBottom,
-  TbRowInsertTop,
   TbSquareHalf,
+  TbSquareMinus,
+  TbSquarePlus2,
   TbSum,
+  TbTableMinus,
+  TbTablePlus,
 } from "react-icons/tb";
 import {
   TiDelete,
@@ -154,13 +178,20 @@ import {
   TiSortNumerically,
 } from "react-icons/ti";
 import { TfiThought } from "react-icons/tfi";
-import { RiBearSmileLine, RiDeleteBin7Line } from "react-icons/ri";
+import {
+  RiBearSmileLine,
+  RiCheckboxMultipleFill,
+  RiDeleteBack2Fill,
+  RiDeleteBin7Line,
+} from "react-icons/ri";
 import { RxDotFilled } from "react-icons/rx";
 import {
   PiCheckSquareOffsetBold,
   PiCircleNotch,
+  PiFolders,
   PiGavel,
 } from "react-icons/pi";
+import { SlBriefcase } from "react-icons/sl";
 import {
   VscBeaker,
   VscBook,
@@ -169,13 +200,14 @@ import {
   VscTarget,
 } from "react-icons/vsc";
 
-export const handlePress = (e: React.KeyboardEvent, callback: () => any) => {
-  if ([" ", "Enter"].includes(e.key)) {
-    e.preventDefault();
-    e.stopPropagation();
-    callback();
-  }
-};
+export const handlePress =
+  (callback: (e: any) => any) => (e: React.KeyboardEvent) => {
+    if ([" ", "Enter"].includes(e.key)) {
+      e.preventDefault();
+      e.stopPropagation();
+      callback(e);
+    }
+  };
 
 export type IconColors =
   | "white"
@@ -219,8 +251,11 @@ export const Icons = {
   CheckboxPlaceholder: PiCheckSquareOffsetBold,
   CheckboxCheckedBigger: BsCheckSquareFill,
   CheckboxChecked: AiFillCheckSquare,
+  CheckboxPlus: TbSquarePlus2,
+  CheckboxRemove: TbSquareMinus,
   ChecklistLong: VscChecklist,
   Check: AiOutlineCheck,
+  CheckAll: RiCheckboxMultipleFill,
   Checklist: MdChecklist,
   ListOl: TbListNumbers,
   ListUl: BsListUl,
@@ -235,8 +270,10 @@ export const Icons = {
   Lines: BsTextLeft,
   LinesMany: BsListColumnsReverse,
   Card: BsCardText,
+  Notebook: GiNotebook,
   InfoBox: TbInfoSquare,
   MultiLineSelect: LuTextSelect,
+  Grid: LuLayoutGrid,
 
   Smile: RiBearSmileLine,
 
@@ -260,6 +297,7 @@ export const Icons = {
   Widen: CgArrowsBreakeH,
   Narrow: CgArrowsMergeAltH,
   SortArrows: TbArrowsSort,
+  SortTodo: LuListTodo,
   ArrowTopRight: CgArrowTopRight,
   MoveArrows: BsArrowsMove,
   FullScreen: BsFullscreen,
@@ -282,11 +320,18 @@ export const Icons = {
 
   Calculate: AiOutlineCalculator,
   SwitchArrows: GoArrowSwitch,
+  ArrowUp: GoArrowUp,
+  ArrowDown: GoArrowDown,
 
   Loading: PiCircleNotch,
   Refresh: MdRefresh,
 
+  Folder: AiFillFolder,
+  FolderOutline: AiOutlineFolder,
+  FolderOpen: AiFillFolderOpen,
   FolderAdd: AiFillFolderAdd,
+  FolderEdit: LuFolderEdit,
+  Folders: PiFolders,
   Save: AiFillSave,
   Delete: TiDelete,
   Cancel: TiCancel,
@@ -304,16 +349,21 @@ export const Icons = {
   CalendarDay: BsCalendar3Event,
   CalendarMonth: BsCalendar3,
   CalendarRange: BsCalendar3Range,
-  Repeat: MdRepeat,
+  CalendarPlus: LuCalendarPlus,
+  CalendarCheck: BsCalendarCheck,
+  ResetTodo: MdRepeat,
+  Repeat: BsArrowRepeat,
   RepeatOff: TbRepeatOff,
-  Backwards: FaFastBackward,
+  Backwards: BsSkipBackwardCircle,
   Overdue: LuCalendarClock,
 
   Table: BsTable,
-  TableInsertColRight: TbColumnInsertRight,
-  TableInsertColLeft: TbColumnInsertLeft,
-  TableInsertRowTop: TbRowInsertTop,
-  TableInsertRowBottom: TbRowInsertBottom,
+  TableCreate: TbTablePlus,
+  TableRemove: TbTableMinus,
+  TableInsertColRight: AiOutlineInsertRowRight,
+  TableInsertColLeft: AiOutlineInsertRowLeft,
+  TableInsertRowTop: AiOutlineInsertRowAbove,
+  TableInsertRowBottom: AiOutlineInsertRowBelow,
   TableDeleteCol: AiOutlineDeleteColumn,
   TableDeleteRow: AiOutlineDeleteRow,
 
@@ -337,32 +387,35 @@ export const Icons = {
   Beaker: VscBeaker,
   BeakerFilled: HiBeaker,
   QuestionCircle: BsQuestionCircle,
+  QuestionStop: BsQuestionOctagon,
   ThoughtBubble: TfiThought,
   LightBulb: FaLightbulb,
   Target: VscTarget,
   Bullseye: GoGoal,
+  Briefcase: SlBriefcase,
+  Contact: BiEnvelope,
 
   Strikethrough: ImStrikethrough,
   Copy: LuCopy,
   CopySuccess: LuCopyCheck,
-  CopyAlt: BiCopyAlt,
   Link: HiLink,
   Export: BiExport,
 
   Raw: BsFiletypeRaw,
-  ExclamationCircleFill: AiFillExclamationCircle,
+  ExclamationStop: BsExclamationOctagonFill,
 
-  Pencil: ImPencil,
+  Pencil: HiPencil,
   CardPencil: HiPencilAlt,
   TrashX: MdDeleteForever,
   Trash: BsTrash,
   TrashRestore: LiaTrashRestoreAltSolid,
+  DeleteLine: RiDeleteBack2Fill,
   StarFilled: AiFillStar,
   Bold: FaBold,
   Italic: AiOutlineItalic,
 
   Pin: AiFillPushpin,
-  Percent: AiOutlinePercentage,
+  Percent: MdPercent,
   Sum: TbSum,
 
   Toilet: FaToilet,
@@ -375,6 +428,7 @@ export const Icons = {
 
   Ruler: BiRuler,
   EyeOff: HiOutlineEyeOff,
+  Eye: HiOutlineEye,
   MagnifyingGlass: BiSearch,
   ListSearch: TbListSearch,
   Book: VscBook,
