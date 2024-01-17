@@ -34,7 +34,6 @@ import {
   BiArrowToLeft,
   BiArrowToRight,
   BiArrowToTop,
-  BiBriefcase,
   BiChevronDown,
   BiChevronLeft,
   BiChevronRight,
