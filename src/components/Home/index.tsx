@@ -15,7 +15,7 @@ function Homepage() {
 
   const { opacities: delayedOpacities } = useOpacityOnMount({
     ms: TRANSITION_MS / 2,
-    transitions: 5,
+    transitions: 25,
     delay: TRANSITION_MS * 3,
   });
 
@@ -44,7 +44,7 @@ function Homepage() {
           transition: TRANSITION_MS + "ms",
         }}
       >
-        Adept in Javascript, Typescript and React
+        Adept in Javascript/Typescript and React
       </span>
       <div
         className="flex col lightish-grey smaller-font v-m-25 space-letters max-width-400 pointer"
@@ -64,7 +64,7 @@ function Homepage() {
               transition: TRANSITION_MS + "ms",
             }}
           >
-            Progressive Web Apps
+            Angular
           </li>
           <li
             style={{
@@ -72,7 +72,7 @@ function Homepage() {
               transition: TRANSITION_MS + "ms",
             }}
           >
-            Angular
+            Progressive Web Apps
           </li>
           <li
             style={{
@@ -80,23 +80,193 @@ function Homepage() {
               transition: TRANSITION_MS + "ms",
             }}
           >
-            Backend development with AWS
+            AWS
           </li>
           <li
             style={{
               opacity: delayedOpacities[3],
               transition: TRANSITION_MS + "ms",
             }}
+            className="m-l-2"
           >
-            Hosting/Deployment
+            DyanamoDB
           </li>
           <li
             style={{
               opacity: delayedOpacities[4],
               transition: TRANSITION_MS + "ms",
             }}
+            className="m-l-2"
           >
-            Automated Testing
+            Lambda
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[5],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            S3
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[6],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            API Gateway
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[7],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            Cognito
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[8],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            CloudFormation
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[9],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            CloudFront
+          </li>
+
+          <li
+            style={{
+              opacity: delayedOpacities[10],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            CloudWatch
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[11],
+              transition: TRANSITION_MS + "ms",
+            }}
+            className="m-l-2"
+          >
+            Route 53
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[12],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            MongoDB
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[13],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Node.js
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[14],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Express
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[15],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Firebase
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[16],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Jest
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[17],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Enzyme
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[18],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Cucumber
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[19],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Vite
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[20],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Sass
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[21],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            End-to-end testing
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[22],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Hosting/deployment
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[23],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Agile Development
+          </li>
+          <li
+            style={{
+              opacity: delayedOpacities[23],
+              transition: TRANSITION_MS + "ms",
+            }}
+          >
+            Google Analytics
           </li>
         </ul>
       </div>

@@ -15,7 +15,7 @@ function Experience() {
       <div className="flex row wrap align-start justify-center full-width space-letters">
         <Category
           transitionNum={0}
-          header="Professional"
+          header="Professional Projects"
           div1="Slalom Build"
           first={{
             label: "Senior Software Engineer",
@@ -23,19 +23,19 @@ function Experience() {
             contents: [
               {
                 text: "Worked on various slices of monolithic application for main POS web app of major telecom company",
-                postText: "(Angular/Testing/Analytics)",
+                postText: "(Angular / Cucumber / Google Analytics)",
               },
               {
-                text: "Refactored legacy code and fixed/documented bugs to prepare for client handoff",
+                text: "Optimized end-to-end tests to reduce pipeline testing time by 30%",
               },
               {
-                text: "Led optimization of end-to-end testing infrastructure to reduce pipeline testing time by 30%",
+                text: "Implemented analytics to track user-flows and identify failures and areas of improvement",
               },
               {
-                text: "Implemented Google Analytics to track user-flows, prevent failures, and identify areas of improvement",
+                text: "Prepared legacy code for client handoff with refactors, bug fixes and documentation",
               },
               {
-                text: "Led pilot team for enabling utilization of existing Angular web components within mobile application web-view",
+                text: "Led small pilot team for enabling usage of Angular web components within mobile app",
               },
             ],
           }}
@@ -44,20 +44,20 @@ function Experience() {
             duration: "(Aug 2019- Feb 2022)",
             contents: [
               {
-                text: "Worked on various microservice teams in re-platforming efforts for large mortgage company",
-                postText: "(React/NodeJS/AWS/GraphQL)",
+                text: "Worked on multiple microservice teams in re-platforming efforts for large mortgage company",
+                postText: "(React / GraphQL / Node.js / AWS)",
               },
               {
-                text: "Built and managed React UI component library (used across dozens of teams)",
+                text: "Built React UI component library (used across dozens of teams)",
               },
               {
-                text: "Developed system to convert 30+ configuration spreadsheets into individual React micro-apps for separate loan processes, connected to a shared AWS API",
+                text: "Developed system to convert 30+ business-written configurations for loan forms into React microservices connected to a shared AWS API",
               },
               {
                 text: "Worked on greenfield team for engineering proof-of-concept fullstack microservices for business to determine resource allocation",
               },
               {
-                text: "Served as SME for developing new microservices using client loan application environment",
+                text: "Served as SME for developing new microservices within client application environment",
               },
             ],
           }}
@@ -67,7 +67,7 @@ function Experience() {
             contents: [
               {
                 text: "Worked on internal portal for facilitating communication, scheduling and resource-sharing between recruiters and job candidates",
-                postText: "(Angular/AWS)",
+                postText: "(Angular / AWS)",
               },
             ],
           }}
@@ -80,8 +80,9 @@ function Experience() {
             duration: "(2020 - Present)",
             contents: [
               {
-                text: "Progressive web app for productive note-taking which tracks to-do items and calendar items",
-                postText: "(React/NodeJS/AWS/Hosting/Deployment)",
+                text: "Built a progressive web app for productive note-taking which tracks to-do items and calendar items across notes",
+                postText:
+                  "(React / Vite / Sass / Node.js / AWS / hosting / deployment)",
               },
               {
                 text: "notes.barin-yoder.com/about",
@@ -89,20 +90,110 @@ function Experience() {
                 fillBullet: true,
               },
               {
-                text: "AWS for hosting and backend",
+                text: "AWS backend and hosting",
               },
               {
-                text: "Frontend built with React",
+                text: "React frontend",
+              },
+              {
+                text: "Used by friends and family",
               },
             ],
           }}
           second={{
             label: "JumboCode",
-            duration: "(2018-2019)",
+            duration: "(2018 - 2019)",
             contents: [
               {
-                text: "Lead frontend developer for building anonymous messaging hotline for campus mental-health group",
-                postText: "(HTML/CSS/Javascript)",
+                text: "Served as lead frontend developer in building anonymous messaging hotline web app for Tufts mental-health group",
+                postText: "(HTML / CSS / Javascript)",
+              },
+            ],
+          }}
+        />
+        <Category
+          transitionNum={2}
+          header="Skills/Technology"
+          first={{
+            label: "Languages",
+            contents: [
+              {
+                text: "Javascript/Typescript",
+              },
+              {
+                text: "HTML/CSS",
+              },
+              {
+                text: "C++",
+              },
+              {
+                text: "SQL",
+              },
+              {
+                text: "GraphQL",
+              },
+            ],
+          }}
+          second={{
+            label: "Frameworks/Technologies",
+            contents: [
+              {
+                text: "React",
+              },
+              {
+                text: "AWS",
+                postText:
+                  "(DynamoDB, Lambda, API Gateway, Cognito, CloudFormation, CloudFront, S3, CloudWatch, Route 53)",
+              },
+              {
+                text: "Angular",
+              },
+              {
+                text: "MongoDB",
+              },
+              {
+                text: "Node.js",
+              },
+              {
+                text: "Express.js",
+              },
+              {
+                text: "Firebase",
+              },
+              {
+                text: "Jest",
+              },
+              {
+                text: "Enzyme",
+              },
+              {
+                text: "Cucumber",
+              },
+              {
+                text: "Vite",
+              },
+              {
+                text: "Sass",
+              },
+            ],
+          }}
+          third={{
+            label: "Other",
+            contents: [
+              {
+                text: "Progressive Web Apps",
+              },
+              {
+                text: "Google Analytics",
+              },
+              {
+                text: "E2E Testing",
+              },
+              {
+                text: "Hosting/Deployment",
+              },
+              {
+                text: "Agile Development",
               },
             ],
           }}
@@ -116,7 +207,7 @@ export default Experience;
 
 type Section = {
   label: string;
-  duration: string;
+  duration?: string;
   contents: {
     fillBullet?: boolean;
     link?: string;
@@ -127,6 +218,7 @@ type Section = {
 
 const Category = (props: {
   div1?: string;
+  div2?: string;
   transitionNum: number;
   header: string;
   first: Section;
@@ -137,9 +229,9 @@ const Category = (props: {
   const div1Ref = useRef<HTMLDivElement>(null);
 
   const [collapsed, setCollapsed] = useState(true);
-  const [thirdCollapsed, setThirdCollapsed] = useState(true);
-  const [secondCollapsed, setSecondCollapsed] = useState(true);
-  const [firstCollapsed, setFirstCollapsed] = useState(true);
+  const [thirdCollapsed, setThirdCollapsed] = useState(false);
+  const [secondCollapsed, setSecondCollapsed] = useState(false);
+  const [firstCollapsed, setFirstCollapsed] = useState(false);
   const [thirdHovering, setThirdHovering] = useState(false);
   const [secondHovering, setSecondHovering] = useState(false);
   const [firstHovering, setFirstHovering] = useState(false);
@@ -147,7 +239,7 @@ const Category = (props: {
 
   const { opacities } = useOpacityOnMount({
     ms: TRANSITION_MS / 2,
-    transitions: 3,
+    transitions: 4,
   });
 
   return (
@@ -254,14 +346,16 @@ const Category = (props: {
                   >
                     {props.first.label}{" "}
                   </span>
-                  <span
-                    onMouseOver={() => setFirstHovering(true)}
-                    onMouseOut={() => setFirstHovering(false)}
-                    onClick={() => setFirstCollapsed(current => !current)}
-                    className="pointer light-grey"
-                  >
-                    {props.first.duration}
-                  </span>
+                  {props.first.duration && (
+                    <span
+                      onMouseOver={() => setFirstHovering(true)}
+                      onMouseOut={() => setFirstHovering(false)}
+                      onClick={() => setFirstCollapsed(current => !current)}
+                      className="pointer light-grey"
+                    >
+                      {props.first.duration}
+                    </span>
+                  )}
                 </div>
               </div>
               {!firstCollapsed && (
@@ -294,7 +388,9 @@ const Category = (props: {
                           liContent.text
                         )}{" "}
                         {liContent.postText && (
-                          <span className="grey">{liContent.postText}</span>
+                          <span className="light-grey">
+                            {liContent.postText}
+                          </span>
                         )}
                       </li>
                     ))}
@@ -338,14 +434,16 @@ const Category = (props: {
                     >
                       {props.second.label}{" "}
                     </span>
-                    <span
-                      onMouseOver={() => setSecondHovering(true)}
-                      onMouseOut={() => setSecondHovering(false)}
-                      onClick={() => setSecondCollapsed(current => !current)}
-                      className="pointer light-grey"
-                    >
-                      {props.second.duration}
-                    </span>
+                    {props.second.duration && (
+                      <span
+                        onMouseOver={() => setSecondHovering(true)}
+                        onMouseOut={() => setSecondHovering(false)}
+                        onClick={() => setSecondCollapsed(current => !current)}
+                        className="pointer light-grey"
+                      >
+                        {props.second.duration}
+                      </span>
+                    )}
                   </div>
                 </div>
                 {!secondCollapsed && (
@@ -366,7 +464,9 @@ const Category = (props: {
                         <li className="m-b-50 light-grey">
                           {liContent.text}{" "}
                           {liContent.postText && (
-                            <span className="grey">{liContent.postText}</span>
+                            <span className="light-grey">
+                              {liContent.postText}
+                            </span>
                           )}
                         </li>
                       ))}
@@ -411,14 +511,16 @@ const Category = (props: {
                     >
                       {props.third.label}{" "}
                     </span>
-                    <span
-                      onMouseOver={() => setThirdHovering(true)}
-                      onMouseOut={() => setThirdHovering(false)}
-                      onClick={() => setThirdCollapsed(current => !current)}
-                      className="pointer light-grey"
-                    >
-                      {props.third.duration}
-                    </span>
+                    {props.third.duration && (
+                      <span
+                        onMouseOver={() => setThirdHovering(true)}
+                        onMouseOut={() => setThirdHovering(false)}
+                        onClick={() => setThirdCollapsed(current => !current)}
+                        className="pointer light-grey"
+                      >
+                        {props.third.duration}
+                      </span>
+                    )}
                   </div>
                 </div>
                 {!thirdCollapsed && (
@@ -439,7 +541,9 @@ const Category = (props: {
                         <li className="m-b-50 light-grey">
                           {liContent.text}{" "}
                           {liContent.postText && (
-                            <span className="grey">{liContent.postText}</span>
+                            <span className="light-grey">
+                              {liContent.postText}
+                            </span>
                           )}
                         </li>
                       ))}
