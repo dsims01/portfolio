@@ -14,10 +14,39 @@ function Homepage() {
   });
 
   const { opacities: delayedOpacities } = useOpacityOnMount({
-    ms: TRANSITION_MS / 2,
-    transitions: 25,
+    ms: TRANSITION_MS / 3,
+    transitions: 26,
     delay: TRANSITION_MS * 3,
   });
+
+  const additionalExperienceItems: { item: string; className?: string }[] = [
+    { item: "Angular" },
+    { item: "Progressive Web Apps" },
+    { item: "AWS" },
+    { item: "DyanamoDB", className: "m-l-2" },
+    { item: "Lambda", className: "m-l-2" },
+    { item: "S3", className: "m-l-2" },
+    { item: "API Gateway", className: "m-l-2" },
+    { item: "Cognito", className: "m-l-2" },
+    { item: "CloudFormation", className: "m-l-2" },
+    { item: "CloudFront", className: "m-l-2" },
+    { item: "CloudWatch", className: "m-l-2" },
+    { item: "Route 53", className: "m-l-2" },
+    { item: "Web workers" },
+    { item: "MongoDB" },
+    { item: "Node.js" },
+    { item: "Express" },
+    { item: "Firebase" },
+    { item: "Jest" },
+    { item: "Enzyme" },
+    { item: "Cucumber" },
+    { item: "Vite" },
+    { item: "Sass" },
+    { item: "End-to-end testing" },
+    { item: "Hosting/deployment" },
+    { item: "Agile Development" },
+    { item: "Google Analytics" },
+  ];
 
   return (
     <div className="flex col h-m-1">
@@ -58,216 +87,17 @@ function Homepage() {
       >
         <span className="lightish-grey italic">With experience in</span>
         <ul className="circle-list m-0">
-          <li
-            style={{
-              opacity: delayedOpacities[0],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Angular
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[1],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Progressive Web Apps
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[2],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            AWS
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[3],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            DyanamoDB
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[4],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            Lambda
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[5],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            S3
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[6],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            API Gateway
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[7],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            Cognito
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[8],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            CloudFormation
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[9],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            CloudFront
-          </li>
-
-          <li
-            style={{
-              opacity: delayedOpacities[10],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            CloudWatch
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[11],
-              transition: TRANSITION_MS + "ms",
-            }}
-            className="m-l-2"
-          >
-            Route 53
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[12],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            MongoDB
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[13],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Node.js
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[14],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Express
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[15],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Firebase
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[16],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Jest
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[17],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Enzyme
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[18],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Cucumber
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[19],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Vite
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[20],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Sass
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[21],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            End-to-end testing
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[22],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Hosting/deployment
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[23],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Agile Development
-          </li>
-          <li
-            style={{
-              opacity: delayedOpacities[23],
-              transition: TRANSITION_MS + "ms",
-            }}
-          >
-            Google Analytics
-          </li>
+          {additionalExperienceItems.map((itemData, index) => (
+            <li
+              style={{
+                opacity: delayedOpacities[index],
+                transition: TRANSITION_MS + "ms",
+              }}
+              className={itemData.className}
+            >
+              {itemData.item}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

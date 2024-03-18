@@ -82,7 +82,7 @@ function Experience() {
               {
                 text: "Built a progressive web app for productive note-taking which tracks to-do items and calendar items across notes",
                 postText:
-                  "(React / Vite / Sass / Node.js / AWS / hosting / deployment)",
+                  "(React / Vite / Sass / Node.js / AWS / Web workers / hosting / deployment)",
               },
               {
                 text: "notes.barin-yoder.com/about",
