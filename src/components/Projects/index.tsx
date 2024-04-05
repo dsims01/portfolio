@@ -85,8 +85,8 @@ function Experience() {
                   "(React / Vite / Sass / Node.js / AWS / Web workers / hosting / deployment)",
               },
               {
-                text: "notes.barin-yoder.com/about",
-                link: "https://notes.barin-yoder.com/about",
+                text: "barin-noter.com/about",
+                link: "https://barin-noter.com/about",
                 fillBullet: true,
               },
               {
