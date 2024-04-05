@@ -22,20 +22,20 @@ function Experience() {
             duration: "(Feb 2022 - June 2023)",
             contents: [
               {
-                text: "Worked on various slices of monolithic application for main POS web app of major telecom company",
+                text: "Worked on monolithic Angular application for main POS system of major telecom company",
                 postText: "(Angular / Cucumber / Google Analytics)",
               },
               {
                 text: "Optimized end-to-end tests to reduce pipeline testing time by 30%",
               },
               {
-                text: "Implemented analytics to track user-flows and identify failures and areas of improvement",
+                text: "Implemented Google Analytics tracking to identify areas of improvement",
               },
               {
-                text: "Prepared legacy code for client handoff with refactors, bug fixes and documentation",
+                text: "Led small pilot team for enabling usage of Angular web components within mobile app and coordinating with mobile team",
               },
               {
-                text: "Led small pilot team for enabling usage of Angular web components within mobile app",
+                text: "Prepared legacy code for client handoff with cleanup / documentation",
               },
             ],
           }}
@@ -44,20 +44,17 @@ function Experience() {
             duration: "(Aug 2019- Feb 2022)",
             contents: [
               {
-                text: "Worked on multiple microservice teams in re-platforming efforts for large mortgage company",
+                text: "Worked on multiple React/AWS microservice teams in re-platforming efforts for large mortgage company",
                 postText: "(React / GraphQL / Node.js / AWS)",
               },
               {
-                text: "Built React UI component library (used across dozens of teams)",
+                text: "Built React component library used across dozens of microservice teams",
               },
               {
-                text: "Developed system to convert 30+ business-written configurations for loan forms into React microservices connected to a shared AWS API",
+                text: "Developed system for generating React/AWS microservices from spreadsheet configurations for loan forms",
               },
               {
-                text: "Worked on greenfield team for engineering proof-of-concept fullstack microservices for business to determine resource allocation",
-              },
-              {
-                text: "Served as SME for developing new microservices within client application environment",
+                text: "Worked on greenfield team for spinning up proof-of-concept fullstack microservices for more complex loan processes",
               },
             ],
           }}
@@ -80,23 +77,23 @@ function Experience() {
             duration: "(2020 - Present)",
             contents: [
               {
-                text: "Built a progressive web app for productive note-taking which tracks to-do items and calendar items across notes",
+                text: "Developed a web app for productive note-taking",
                 postText:
                   "(React / Vite / Sass / Node.js / AWS / Web workers / hosting / deployment)",
+              },
+              {
+                text: "Inline integration of to-do and calendar items into notes",
+              },
+              {
+                text: "Progressive web app (can be used in browser or installed onto mobile/desktop device)",
+              },
+              {
+                text: "AWS used for user authentication, database and API services, and deployment/hosting",
               },
               {
                 text: "barin-noter.com/about",
                 link: "https://barin-noter.com/about",
                 fillBullet: true,
-              },
-              {
-                text: "AWS backend and hosting",
-              },
-              {
-                text: "React frontend",
-              },
-              {
-                text: "Used by friends and family",
               },
             ],
           }}
@@ -174,6 +171,9 @@ function Experience() {
               },
               {
                 text: "Sass",
+              },
+              {
+                text: "Web workers",
               },
             ],
           }}
